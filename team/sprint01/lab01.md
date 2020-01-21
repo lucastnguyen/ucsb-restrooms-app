@@ -1,6 +1,9 @@
-Did attendence
+Wrote attendence on board
+
 Made temporary name for project: UCSBB
+
 Began creating User Journey and Problem Scenario (not done yet)
+
 Discussed the minimum viable product (MVP)
 
 MVP map:
