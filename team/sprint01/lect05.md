@@ -1,0 +1,14 @@
+Attendance: Nick here
+            Lucas here
+            Kimi here
+            JAck here
+            David here
+            Cameron here
+ Meeting type: daily scrum
+            Name: what they did; what they're going to do; roadblocks
+            Cameron: watched video on js arrow functions; read up on markup language; 
+            Kimi: completed pull request issues; push Hello World app
+            Lucas: pull request for Expo Hello World, Splash art for logo
+            Derek: learning REact Native;puta map or list in the app ;can't launch Expo Project
+            Jack: read blogs about firebase; start app on android, sync data between server and Android
+            Nick: ; push Hello World App, get it running on ANdroid emulator; can;t set development environment
