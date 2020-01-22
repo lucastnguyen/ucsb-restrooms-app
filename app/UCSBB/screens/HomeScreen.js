@@ -40,7 +40,7 @@ export default function HomeScreen() {
           </View>
 
           <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload.
+            Hello World! This is a test for CS48 UCSB Bathrooms App.
           </Text>
         </View>
 
