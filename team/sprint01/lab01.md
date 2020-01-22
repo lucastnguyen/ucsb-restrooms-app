@@ -1,5 +1,8 @@
 Wrote attendence on board
 
+Scrum Meeting:
+
+
 Made temporary name for project: UCSBB
 
 Began creating User Journey and Problem Scenario (not done yet)
