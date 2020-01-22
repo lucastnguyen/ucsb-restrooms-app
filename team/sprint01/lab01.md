@@ -1,6 +1,6 @@
 1. Wrote attendence on board
 
-2. Scrum Meeting: </br>
+2. Scrum Meeting:
 Name: What I did // What I will do // Roadblocks</br></br>
 **Cameron**: watched video about React Native + Google Maps//Learn Javascript</br>
 **Lucas**: Hello World App//Get a map in there</br>
