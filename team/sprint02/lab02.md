@@ -1,5 +1,5 @@
 Attendence:
-* Kimi absent due to knee injury (but was on Facetime)
+* Kimi not physically here due to knee injury but was on Facetime
 * Jack here
 * Derek here
 * Lucas here
