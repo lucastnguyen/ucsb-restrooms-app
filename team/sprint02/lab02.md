@@ -15,7 +15,7 @@ Name: Thing did / Thing to do / Obstacle
 * Lucas: Automation on Canban board works / Continue to work on new stuff / none
 * Kimi: Successfully pushed Hello World / Needs to be assigned to new issues / none
 
-Things we did: 
+Things we did during lab: 
 * Scrum Meeting
 * Reorganizing the Kanban Board and adding issues
 * Determining programming teams and assigning them to issues
