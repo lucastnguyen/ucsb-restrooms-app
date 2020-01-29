@@ -26,7 +26,7 @@ export default function HomeScreen() {
       latitude: 34.413963,
       longitude: -119.848946,
       latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
+      longitudeDelta: 0.0422,
     }}
     mapType = "standard"
     showsUserLocation = {true}
