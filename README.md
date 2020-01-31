@@ -2,7 +2,7 @@
 ### mobile app that helps locate the nearest restrooms
 ### using React Native and Expo
 
-### Setup:
-To get the app to work, remember to type 
-`npm install react-native-maps`
+### Usage:
+In addition to regular react-native installation, run 
+`npm install react-native-maps` before starting the app.
 
