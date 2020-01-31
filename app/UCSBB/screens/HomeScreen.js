@@ -1,5 +1,6 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
+import { marker } from 'react-native-maps'
 import {
   Image,
   Platform,
@@ -8,9 +9,10 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Dimensions
 } from 'react-native';
 
-import MapView from "react-native-maps";
+import MapView from 'react-native-maps'
 
 import { MonoText } from '../components/StyledText';
 
@@ -27,57 +29,7 @@ export default function HomeScreen() {
     mapType = "standard"
     showsUserLocation = {true}
     />
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
-
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
-
-          <Text style={styles.getStartedText}>Get started by opening</Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
-
-          <Text style={styles.getStartedText}>
-            Hello World! This is a test for CS48 UCSB Bathrooms App.
-          </Text>
-        </View>
-
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
-        </View>
       </View>
-    </View>
   );
 }
 
@@ -206,5 +158,15 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: '#2e78b7',
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  mapStyle: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
 });
