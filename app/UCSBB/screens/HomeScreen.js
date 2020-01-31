@@ -10,6 +10,8 @@ import {
   View,
 } from 'react-native';
 
+import MapView from "react-native-maps";
+
 import { MonoText } from '../components/StyledText';
 
 export default function HomeScreen() {
