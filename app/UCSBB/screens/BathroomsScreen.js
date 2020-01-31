@@ -7,8 +7,6 @@ import {
   Dimensions,
 } from 'react-native';
 import CollapsibleList from "react-native-collapsible-list";
-import { CollapsibleBathroomsList } from '../components/CollapsibleBathroomsList';
-
 import { MonoText } from '../components/StyledText';
 
 export default function BathroomsScreen() {
