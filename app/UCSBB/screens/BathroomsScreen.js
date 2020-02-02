@@ -24,22 +24,22 @@ export default function BathroomsScreen() {
                   <Text style={styles.buttonText}>Phelps Hall</Text>
                 </View>
               }>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemFemale}>
                 <Text style={styles.collapsibleItemText}>Phelps 0000</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Phelps 0001</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemFemale}>
                 <Text style={styles.collapsibleItemText}>Phelps 0002</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Phelps 0003</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemNeutral}>
                 <Text style={styles.collapsibleItemText}>Phelps 2501</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemFemale}>
                 <Text style={styles.collapsibleItemText}>Phelps 3501</Text>
               </View>
           </CollapsibleList>
@@ -51,22 +51,22 @@ export default function BathroomsScreen() {
                   <Text style={styles.buttonText}>South Hall</Text>
                 </View>
               }>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemNeutral}>
                 <Text style={styles.collapsibleItemText}>South Hall 1636</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemFemale}>
                 <Text style={styles.collapsibleItemText}>South Hall 0001</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>South Hall 0002</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemFemale}>
                 <Text style={styles.collapsibleItemText}>South Hall 0003</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>South Hall 0004</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemFemale}>
                 <Text style={styles.collapsibleItemText}>South Hall 0005</Text>
               </View>
           </CollapsibleList>
@@ -78,22 +78,22 @@ export default function BathroomsScreen() {
                   <Text style={styles.buttonText}>Arts Building</Text>
                 </View>
               }>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Arts Building 0000</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Arts Building 0001</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemFemale}>
                 <Text style={styles.collapsibleItemText}>Arts Building 0002</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemFemale}>
                 <Text style={styles.collapsibleItemText}>Arts Building 0003</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Arts Building 0004</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemFemale}>
                 <Text style={styles.collapsibleItemText}>Arts Building 0005</Text>
               </View>
           </CollapsibleList>
@@ -105,22 +105,22 @@ export default function BathroomsScreen() {
                   <Text style={styles.buttonText}>Harold Frank Hall</Text>
                 </View>
               }>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemNeutral}>
                 <Text style={styles.collapsibleItemText}>Harold Frank Hall 0000</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemFemale}>
                 <Text style={styles.collapsibleItemText}>Harold Frank Hall 0001</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Harold Frank Hall 0002</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemFemale}>
                 <Text style={styles.collapsibleItemText}>Harold Frank Hall 0003</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Harold Frank Hall 0004</Text>
               </View>
-              <View style={styles.collapsibleItem}>
+              <View style={styles.collapsibleItemNeutral}>
                 <Text style={styles.collapsibleItemText}>Harold Frank Hall 0005</Text>
               </View>
           </CollapsibleList>
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     width: Dimensions.get('window').width,
-    backgroundColor: "rgba(170, 226, 240, 0.9)"
+    backgroundColor: "rgba(230, 247, 233, 0.6)"
   },
   buttonText: {
     fontSize: 35,
@@ -172,10 +172,22 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 5
   },
-  collapsibleItem: {
+  collapsibleItemMale: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: "#CCC",
-    backgroundColor: "rgba(170, 226, 240, 0.4)",
+    backgroundColor: "rgba(170, 226, 240, 0.9)",
+    padding: 20
+  },
+  collapsibleItemFemale: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: "#CCC",
+    backgroundColor: "rgba(255, 186, 215, 0.6)",
+    padding: 20
+  },
+  collapsibleItemNeutral: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: "#CCC",
+    backgroundColor: "rgba(255, 242, 128, 0.6)",
     padding: 20
   }
 });
