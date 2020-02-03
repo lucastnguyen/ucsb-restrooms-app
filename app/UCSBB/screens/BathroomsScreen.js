@@ -27,10 +27,10 @@ export default function BathroomsScreen() {
                 </View>
               }>
               <View style={styles.collapsibleItemFemale}>
-                <ListElement text='Phelps 2501' gender='female' accessible='wheelchair' />
+                <ListElement text='Phelps 2501' gender='female' access='wheelchair' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <ListElement text='Phelps 3501' gender='male' accessible='wheelchair' />
+                <ListElement text='Phelps 3501' gender='male' access='wheelchair' />
               </View>
           </CollapsibleList>
           <CollapsibleList
@@ -42,15 +42,7 @@ export default function BathroomsScreen() {
                 </View>
               }>
               <View style={styles.collapsibleItemMale}>
-                <ListElement text='South Hall 1636' gender='male' accessible='wheelchair' />
-                {/*
-                <Text style={styles.collapsibleItemText}>South Hall 1636</Text>
-                {'                           '}
-                <InfoIcon name='wheelchair'/>
-                {'  '}
-                <InfoIcon name='male'/>
-                */}
-                
+                <ListElement text='South Hall 1636' gender='male' access='wheelchair' />
               </View>
           </CollapsibleList>
           <CollapsibleList
