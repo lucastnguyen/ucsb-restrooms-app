@@ -12,17 +12,11 @@ export default class UCSBBMapView extends Component {
 	          latitudeDelta: 0.0922,
 	          longitudeDelta: 0.0422,
 			},
-			markers: {
-				phelps: {
-					latlng: [34.4161,-119.8446],
-					title: "Phelps Hall",
-				},
-			}
 		}
 	}
 
 	onRegionChange(region) {
-		this.setState({ region });
+		this.setState({region});
 	}
 
 	render() {
@@ -31,11 +25,17 @@ export default class UCSBBMapView extends Component {
 		  	  <MapView
 			    style = {styles.mapStyle}
 			    region = {this.state.region}
-			    onRegionChange = {this.onRegionChange}
-			  />
+			    onRegionChange={(region) => {this.onRegionChange}}
+			  >
+		  	  <Marker
+		  	    coordinate={{latitude: 34.41618, longitude: -119.84464,}}
+		  	    title={"Phelps Hall"}
+		  	    description={"desc"}
+		  	  />
+			  </MapView>
 			</View>
 		);
-	}	
+	}
 }
 
 const styles = StyleSheet.create({
