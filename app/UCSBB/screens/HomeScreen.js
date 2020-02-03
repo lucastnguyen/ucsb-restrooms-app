@@ -19,17 +19,17 @@ import { MonoText } from '../components/StyledText';
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-        <MapView style={styles.mapStyle} 
+      <MapView style={styles.mapStyle}
         initialRegion={{
-      latitude: 34.413963,
-      longitude: -119.848946,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0422,
-    }}
-    mapType = "standard"
-    showsUserLocation = {true}
-    />
-      </View>
+          latitude: 34.413963,
+          longitude: -119.848946,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0422,
+        }}
+        mapType = "standard"
+        showsUserLocation = {true}
+      />
+    </View>
   );
 }
 
