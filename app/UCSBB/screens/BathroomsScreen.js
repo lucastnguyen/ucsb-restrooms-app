@@ -7,6 +7,7 @@ import {
   Dimensions,
 } from 'react-native';
 import CollapsibleList from "react-native-collapsible-list";
+import ListElement from '../components/ListElement';
 import { MonoText } from '../components/StyledText';
 
 export default function BathroomsScreen() {
@@ -25,10 +26,10 @@ export default function BathroomsScreen() {
                 </View>
               }>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Phelps 2501</Text>
+                <ListElement text='Phelps 2501' gender='female' access='wheelchair' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Phelps 3501</Text>
+                <ListElement text='Phelps 3501' gender='male' access='wheelchair' />
               </View>
           </CollapsibleList>
           <CollapsibleList
@@ -40,7 +41,7 @@ export default function BathroomsScreen() {
                 </View>
               }>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>South Hall 1636</Text>
+                <ListElement text='South Hall 1636' gender='male' access='wheelchair' />
               </View>
           </CollapsibleList>
           <CollapsibleList
@@ -52,10 +53,10 @@ export default function BathroomsScreen() {
                 </View>
               }>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Buchanan Hall 1914</Text>
+                <ListElement text='Buchanan Hall 1914' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Buchanan Hall 1944</Text>
+                <ListElement text='Buchanan Hall 1944' gender='male' access='none' />
               </View>
           </CollapsibleList>
           <CollapsibleList
@@ -67,43 +68,46 @@ export default function BathroomsScreen() {
                 </View>
               }>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 1725</Text>
+                <ListElement text='Ellison Hall 1725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 1726</Text>
+                <ListElement text='Ellison Hall 1726' gender='male' access='none' />
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 2634</Text>
+                <ListElement text='Ellison Hall 2634' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 2725</Text>
+                <ListElement text='Ellison Hall 2725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 2726</Text>
-              </View>
-              <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 3725</Text>
+              <ListElement text='Ellison Hall 2726' gender='male' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 3726</Text>
+              <ListElement text='Ellison Hall 3634' gender='male' access='none' />
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 4725</Text>
+              <ListElement text='Ellison Hall 3725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 4726</Text>
+              <ListElement text='Ellison Hall 3726' gender='male' access='none' />
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 5725</Text>
+              <ListElement text='Ellison Hall 4725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 5726</Text>
+              <ListElement text='Ellison Hall 4726' gender='male' access='none' />
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 2625</Text>
+              <ListElement text='Ellison Hall 5725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 6726</Text>
+              <ListElement text='Ellison Hall 5726' gender='male' access='none' />
+              </View>
+              <View style={styles.collapsibleItemFemale}>
+              <ListElement text='Ellison Hall 6725' gender='female' access='none' />
+              </View>
+              <View style={styles.collapsibleItemMale}>
+              <ListElement text='Ellison Hall 6726' gender='male' access='none' />
               </View>
 
           </CollapsibleList>
@@ -131,10 +135,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
     textAlign: 'center',
   },
-  collapsibleItemText: {
-    fontSize: 24,
-    textAlign: 'left',
-  },
+
   contentContainer: {
     paddingTop: 30,
     justifyContent: "center",
@@ -155,6 +156,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 5
   },
+  collapsibleItemText: {
+    fontSize: 24,
+    textAlign: 'left',
+  },
   collapsibleItemMale: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: "#CCC",
@@ -172,5 +177,5 @@ const styles = StyleSheet.create({
     borderColor: "#CCC",
     backgroundColor: "rgba(255, 242, 128, 0.6)",
     padding: 20
-  }
+  },
 });
