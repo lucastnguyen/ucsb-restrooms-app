@@ -1,8 +1,7 @@
 import React from 'react';
 
-import Colors from '../constants/Colors';
 import InfoIcon from '../components/InfoIcon';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 
 
 export default function ListElement(props) {

@@ -7,7 +7,6 @@ import {
   Dimensions,
 } from 'react-native';
 import CollapsibleList from "react-native-collapsible-list";
-import InfoIcon from '../components/InfoIcon';
 import ListElement from '../components/ListElement';
 import { MonoText } from '../components/StyledText';
 
