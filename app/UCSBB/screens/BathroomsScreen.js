@@ -25,21 +25,9 @@ export default function BathroomsScreen() {
                 </View>
               }>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Phelps 0000</Text>
-              </View>
-              <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Phelps 0001</Text>
-              </View>
-              <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Phelps 0002</Text>
-              </View>
-              <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Phelps 0003</Text>
-              </View>
-              <View style={styles.collapsibleItemNeutral}>
                 <Text style={styles.collapsibleItemText}>Phelps 2501</Text>
               </View>
-              <View style={styles.collapsibleItemFemale}>
+              <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Phelps 3501</Text>
               </View>
           </CollapsibleList>
@@ -51,23 +39,23 @@ export default function BathroomsScreen() {
                   <Text style={styles.buttonText}>South Hall</Text>
                 </View>
               }>
-              <View style={styles.collapsibleItemNeutral}>
+              <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>South Hall 1636</Text>
               </View>
+          </CollapsibleList>
+          <CollapsibleList
+              numberOfVisibleItems={0}
+              wrapperStyle={styles.wrapperCollapsibleList}
+              buttonContent={
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>Buchanan Hall</Text>
+                </View>
+              }>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>South Hall 0001</Text>
+                <Text style={styles.collapsibleItemText}>Buchanan Hall 1914</Text>
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>South Hall 0002</Text>
-              </View>
-              <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>South Hall 0003</Text>
-              </View>
-              <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>South Hall 0004</Text>
-              </View>
-              <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>South Hall 0005</Text>
+                <Text style={styles.collapsibleItemText}>Buchanan Hall 1944</Text>
               </View>
           </CollapsibleList>
           <CollapsibleList
@@ -75,54 +63,49 @@ export default function BathroomsScreen() {
               wrapperStyle={styles.wrapperCollapsibleList}
               buttonContent={
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>Arts Building</Text>
+                  <Text style={styles.buttonText}>Ellison Hall</Text>
                 </View>
               }>
-              <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Arts Building 0000</Text>
-              </View>
-              <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Arts Building 0001</Text>
-              </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Arts Building 0002</Text>
-              </View>
-              <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Arts Building 0003</Text>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 1725</Text>
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Arts Building 0004</Text>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 1726</Text>
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Arts Building 0005</Text>
-              </View>
-          </CollapsibleList>
-          <CollapsibleList
-              numberOfVisibleItems={0}
-              wrapperStyle={styles.wrapperCollapsibleList}
-              buttonContent={
-                <View style={styles.button}>
-                  <Text style={styles.buttonText}>Harold Frank Hall</Text>
-                </View>
-              }>
-              <View style={styles.collapsibleItemNeutral}>
-                <Text style={styles.collapsibleItemText}>Harold Frank Hall 0000</Text>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 2634</Text>
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Harold Frank Hall 0001</Text>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 2725</Text>
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Harold Frank Hall 0002</Text>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 2726</Text>
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Harold Frank Hall 0003</Text>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 3725</Text>
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Harold Frank Hall 0004</Text>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 3726</Text>
               </View>
-              <View style={styles.collapsibleItemNeutral}>
-                <Text style={styles.collapsibleItemText}>Harold Frank Hall 0005</Text>
+              <View style={styles.collapsibleItemFemale}>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 4725</Text>
               </View>
+              <View style={styles.collapsibleItemMale}>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 4726</Text>
+              </View>
+              <View style={styles.collapsibleItemFemale}>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 5725</Text>
+              </View>
+              <View style={styles.collapsibleItemMale}>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 5726</Text>
+              </View>
+              <View style={styles.collapsibleItemFemale}>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 2625</Text>
+              </View>
+              <View style={styles.collapsibleItemMale}>
+                <Text style={styles.collapsibleItemText}>Ellison Hall 6726</Text>
+              </View>
+
           </CollapsibleList>
         </View>
     </ScrollView>
@@ -150,7 +133,7 @@ const styles = StyleSheet.create({
   },
   collapsibleItemText: {
     fontSize: 24,
-    textAlign: 'center',
+    textAlign: 'left',
   },
   contentContainer: {
     paddingTop: 30,
