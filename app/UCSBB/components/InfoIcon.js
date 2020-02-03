@@ -8,7 +8,7 @@ export default function InfoIcon(props) {
     <FontAwesome
       name={props.name}
       size={26}
-      style={{ marginBottom: -3 }}
+      /*style={{ alignContent: 'left' }}*/
       color={Colors.infoIcon}
     />
   );
