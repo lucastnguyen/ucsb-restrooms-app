@@ -54,10 +54,10 @@ export default function BathroomsScreen() {
                 </View>
               }>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Buchanan Hall 1914</Text>
+                <ListElement text='Buchanan Hall 1914' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Buchanan Hall 1944</Text>
+                <ListElement text='Buchanan Hall 1944' gender='male' access='none' />
               </View>
           </CollapsibleList>
           <CollapsibleList
@@ -69,40 +69,40 @@ export default function BathroomsScreen() {
                 </View>
               }>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 1725</Text>
+                <ListElement text='Ellison Hall 1725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 1726</Text>
+                <ListElement text='Ellison Hall 1726' gender='male' access='none' />
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 2634</Text>
+                <ListElement text='Ellison Hall 2634' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 2725</Text>
+                <ListElement text='Ellison Hall 2725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Ellison Hall 2726</Text>
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 3725</Text>
+              <ListElement text='Ellison Hall 3725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Ellison Hall 3726</Text>
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 4725</Text>
+              <ListElement text='Ellison Hall 4725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Ellison Hall 4726</Text>
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 5725</Text>
+              <ListElement text='Ellison Hall 5725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Ellison Hall 5726</Text>
               </View>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 2625</Text>
+              <ListElement text='Ellison Hall 6725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>Ellison Hall 6726</Text>
