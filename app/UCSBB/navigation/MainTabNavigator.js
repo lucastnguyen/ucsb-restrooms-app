@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import MapScreen from '../screens/MapScreen';
 import BathroomsScreen from '../screens/BathroomsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -13,14 +13,14 @@ const config = Platform.select({
   default: {},
 });
 
-const HomeStack = createStackNavigator(
+const MapStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Map: MapScreen,
   },
   config
 );
 
-HomeStack.navigationOptions = {
+MapStack.navigationOptions = {
   tabBarLabel: 'Map',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -30,7 +30,7 @@ HomeStack.navigationOptions = {
   ),
 };
 
-HomeStack.path = '';
+MapStack.path = '';
 
 const BathroomsStack = createStackNavigator(
   {
@@ -68,7 +68,7 @@ SettingsStack.navigationOptions = {
 SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
+  MapStack,
   BathroomsStack,
   SettingsStack,
 });
