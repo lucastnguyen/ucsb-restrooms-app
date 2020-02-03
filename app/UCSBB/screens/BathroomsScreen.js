@@ -42,7 +42,10 @@ export default function BathroomsScreen() {
               }>
               <View style={styles.collapsibleItemMale}>
                 <Text style={styles.collapsibleItemText}>South Hall 1636
-
+                {'                           '}
+                <InfoIcon name='wheelchair'/>
+                {'  '}
+                <InfoIcon name='male'/>
                 </Text>
               </View>
           </CollapsibleList>
