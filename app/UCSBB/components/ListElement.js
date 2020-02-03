@@ -10,7 +10,7 @@ export default function ListElement(props) {
     return (
         <Text style = {{ fontSize: 24, fontFamily: 'Courier', textAlign: 'left' }}> 
         {(props.text + whitespace).slice(0,21)} 
-        {props.access=='wheelchair' ? <InfoIcon name = 'wheelchair' /> : <></>}
+        {props.access=='wheelchair' ? <InfoIcon name = 'wheelchair' /> : <>{'  '}</>}
         {' '}
         <InfoIcon name = {props.gender} />
         </Text>
