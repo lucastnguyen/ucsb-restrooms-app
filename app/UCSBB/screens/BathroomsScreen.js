@@ -7,6 +7,7 @@ import {
   Dimensions,
 } from 'react-native';
 import CollapsibleList from "react-native-collapsible-list";
+import InfoIcon from '../components/InfoIcon';
 import { MonoText } from '../components/StyledText';
 
 export default function BathroomsScreen() {
@@ -40,7 +41,9 @@ export default function BathroomsScreen() {
                 </View>
               }>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>South Hall 1636</Text>
+                <Text style={styles.collapsibleItemText}>South Hall 1636
+
+                </Text>
               </View>
           </CollapsibleList>
           <CollapsibleList
@@ -131,10 +134,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
     textAlign: 'center',
   },
-  collapsibleItemText: {
-    fontSize: 24,
-    textAlign: 'left',
-  },
+
   contentContainer: {
     paddingTop: 30,
     justifyContent: "center",
@@ -155,6 +155,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 5
   },
+  collapsibleItemText: {
+    fontSize: 24,
+    textAlign: 'left',
+  },
   collapsibleItemMale: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: "#CCC",
@@ -172,5 +176,9 @@ const styles = StyleSheet.create({
     borderColor: "#CCC",
     backgroundColor: "rgba(255, 242, 128, 0.6)",
     padding: 20
+  },
+  infoIcons: {
+    padding: 1,
+    textAlign: 'right',
   }
 });
