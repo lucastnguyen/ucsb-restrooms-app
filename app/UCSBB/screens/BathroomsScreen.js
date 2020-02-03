@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import CollapsibleList from "react-native-collapsible-list";
 import InfoIcon from '../components/InfoIcon';
+import ListElement from '../components/ListElement';
 import { MonoText } from '../components/StyledText';
 
 export default function BathroomsScreen() {
@@ -26,10 +27,10 @@ export default function BathroomsScreen() {
                 </View>
               }>
               <View style={styles.collapsibleItemFemale}>
-                <Text style={styles.collapsibleItemText}>Phelps 2501</Text>
+                <ListElement text='Phelps 2501' gender='female' accessible='wheelchair' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Phelps 3501</Text>
+                <ListElement text='Phelps 3501' gender='male' accessible='wheelchair' />
               </View>
           </CollapsibleList>
           <CollapsibleList
@@ -41,12 +42,15 @@ export default function BathroomsScreen() {
                 </View>
               }>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>South Hall 1636
+                <ListElement text='South Hall 1636' gender='male' accessible='wheelchair' />
+                {/*
+                <Text style={styles.collapsibleItemText}>South Hall 1636</Text>
                 {'                           '}
                 <InfoIcon name='wheelchair'/>
                 {'  '}
                 <InfoIcon name='male'/>
-                </Text>
+                */}
+                
               </View>
           </CollapsibleList>
           <CollapsibleList
@@ -180,8 +184,4 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 242, 128, 0.6)",
     padding: 20
   },
-  infoIcons: {
-    padding: 1,
-    textAlign: 'right',
-  }
 });
