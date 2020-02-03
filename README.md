@@ -5,8 +5,7 @@
 ## Instructions for Running
 
 #### For Running on a Simulator
-In addition to regular react-native installation, run 
-`npm install react-native-maps` before starting the app.
+In addition to regular react-native installation, run `npm install react-native-maps` and `npm install react-native-collapsible-list` before starting the app.
 Before running, make sure to have the correct simulator/emulator installed. (Either the iPhone simulator that comes with XCode or an Android device emulator)
 
 To run the app: 
