@@ -81,31 +81,34 @@ export default function BathroomsScreen() {
                 <ListElement text='Ellison Hall 2725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 2726</Text>
+              <ListElement text='Ellison Hall 2726' gender='male' access='none' />
+              </View>
+              <View style={styles.collapsibleItemMale}>
+              <ListElement text='Ellison Hall 3634' gender='male' access='none' />
               </View>
               <View style={styles.collapsibleItemFemale}>
               <ListElement text='Ellison Hall 3725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 3726</Text>
+              <ListElement text='Ellison Hall 3726' gender='male' access='none' />
               </View>
               <View style={styles.collapsibleItemFemale}>
               <ListElement text='Ellison Hall 4725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 4726</Text>
+              <ListElement text='Ellison Hall 4726' gender='male' access='none' />
               </View>
               <View style={styles.collapsibleItemFemale}>
               <ListElement text='Ellison Hall 5725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 5726</Text>
+              <ListElement text='Ellison Hall 5726' gender='male' access='none' />
               </View>
               <View style={styles.collapsibleItemFemale}>
               <ListElement text='Ellison Hall 6725' gender='female' access='none' />
               </View>
               <View style={styles.collapsibleItemMale}>
-                <Text style={styles.collapsibleItemText}>Ellison Hall 6726</Text>
+              <ListElement text='Ellison Hall 6726' gender='male' access='none' />
               </View>
 
           </CollapsibleList>
