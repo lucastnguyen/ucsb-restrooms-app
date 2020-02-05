@@ -7,10 +7,10 @@ export default class UCSBBMapView extends Component {
 		super(props);
 		this.state = {
 			region: {
-	          latitude: 34.413963,
-						longitude: -119.846446,
-						latitudeDelta: 0.02305,
-						longitudeDelta: 0.01055,
+	          		latitude: 34.413963,
+				longitude: -119.846446,
+				latitudeDelta: 0.02305,
+				longitudeDelta: 0.01055,
 			},
 		}
 	}
@@ -26,7 +26,8 @@ export default class UCSBBMapView extends Component {
 			    style = {styles.mapStyle}
 			    region = {this.state.region}
 			    onRegionChange={(region) => {this.onRegionChange}}
-			  	>
+			    showsUserLocation = {true}
+			  >
 
 
 
