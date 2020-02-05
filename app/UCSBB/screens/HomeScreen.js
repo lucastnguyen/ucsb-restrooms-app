@@ -12,7 +12,7 @@ import {
   Dimensions
 } from 'react-native';
 
-import MapView from 'react-native-maps'
+import MapView, {AnimatedRegion} from 'react-native-maps'
 
 import { MonoText } from '../components/StyledText';
 
@@ -23,11 +23,16 @@ export default function HomeScreen() {
         initialRegion={{
       latitude: 34.413963,
       longitude: -119.848946,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0422,
+      latitudeDelta: 0.01522,
+      longitudeDelta: 0.00622,
     }}
     mapType = "standard"
+    provider = {MapView.PROVIDER_GOOGLE}
     showsUserLocation = {true}
+    showsMyLocationButton = {true}
+    showInddors = {true}
+    minZoomLevel = {0}
+    mapPadding={{top: 0, right: 25, bottom: 50, left: 0}} // For position of location button
     />
       </View>
   );
