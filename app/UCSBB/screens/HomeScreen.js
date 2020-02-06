@@ -30,7 +30,7 @@ export default function HomeScreen() {
     provider = {MapView.PROVIDER_GOOGLE}
     showsUserLocation = {true}
     showsMyLocationButton = {true}
-    showInddors = {true}
+    showIndoors = {true}
     minZoomLevel = {0}
     mapPadding={{top: 0, right: 25, bottom: 50, left: 0}} // For position of location button
     />
