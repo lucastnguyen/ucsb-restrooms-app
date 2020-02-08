@@ -9,8 +9,8 @@ export default class UCSBBMapView extends Component {
 			region: {
 	          		latitude: 34.413963,
 				longitude: -119.846446,
-				latitudeDelta: 0.02305,
-				longitudeDelta: 0.01055,
+				latitudeDelta: 0.00205,
+				longitudeDelta: 0.00222,
 			},
 		}
 	}
@@ -26,20 +26,19 @@ export default class UCSBBMapView extends Component {
 			    style = {styles.mapStyle}
 			    region = {this.state.region}
 			    onRegionChange={(region) => {this.onRegionChange}}
+			    mapType = "standard"
+			    provider = {MapView.PROVIDER_GOOGLE}
 			    showsUserLocation = {true}
+			    showsMyLocationButton = {true}
+			    minZoomLevel = {0}
+			    mapPadding={{top: 0, right: 0, bottom: 50, left: 0}} // For position of location button
 			  >
-
-
-
 		  	  <Marker
 						coordinate={{latitude: 34.416161, longitude: -119.844639,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Phelps Hall"}
 						description={"Phelps 1501 Phelps 2501 Phelps 3501"}
 		  	  />
-
-
-
 					<Marker
 						coordinate={{latitude: 34.412468, longitude: -119.849402,}}
 						title={"Arts Building"}
