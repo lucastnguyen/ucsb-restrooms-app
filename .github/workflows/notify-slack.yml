@@ -1,0 +1,6 @@
+- name: Notify Slack
+  env:
+    SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+  uses: pullreminders/slack-action@testing
+  with:
+    args: '{\"channel\":\"GSJPZSYRL\",\"text\":\"A new pull request has been made on the TESTING branch.\"}'
