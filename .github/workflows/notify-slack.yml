@@ -1,0 +1,16 @@
+name: "Slack PR Notification"
+on:
+  # Trigger the workflow on pull request,
+  # but only for the testing branch
+  - pull_request
+        
+env:
+  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: pullreminders/slack-action@testing
+      with:
+        args: '{\"channel\":\"GSJPZSYRL\",\"text\":\"A new pull request has been made.\"}'
