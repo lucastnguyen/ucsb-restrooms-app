@@ -5,14 +5,14 @@ import { Text } from 'react-native';
 
 
 export default function ListElement(props) {
-  var whitespace = '                                                   ';
+  var whitespace = '                                                  ';
     return (
-        <Text style = {{ fontSize: 24, fontFamily: 'Courier', textAlign: 'left' }}> 
-        {(props.text + whitespace).slice(0,18)} 
+        <Text style = {{ fontSize: 24, fontFamily: 'Courier', textAlign: 'left' }}>
+        {(props.text + whitespace).slice(0,18)}
         {props.access=='wheelchair' ? <InfoIcon name = 'wheelchair' /> : <>{'  '}</>}
         {' '}
         <InfoIcon name = {props.gender} />
         </Text>
       );
-    
+
 }
