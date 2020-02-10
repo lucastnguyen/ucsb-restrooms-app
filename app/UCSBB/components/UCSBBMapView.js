@@ -30,7 +30,8 @@ export default class UCSBBMapView extends Component {
 			    region = {this.state.region}
 			    onRegionChange={(region) => {this.onRegionChange}}
 			    mapType = "standard"
-			    provider = {MapView.PROVIDER_GOOGLE}
+				provider = {MapView.PROVIDER_GOOGLE}
+				showsUserLocation = {true}
 			    showsMyLocationButton = {true}
 			    minZoomLevel = {15}
 			    mapPadding={{top: 0, right: 0, bottom: 50, left: 0}} // For position of location button
