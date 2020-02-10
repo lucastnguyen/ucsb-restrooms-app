@@ -18,8 +18,23 @@ export default class UCSBBMapView extends Component {
 		}
 	}
 
-	onRegionChange(region) {
-		this.setState({region});
+	onRegionChangeComplete(region) {
+		if(region.latitude > LAT || region.latitude < LAT){
+			this.map.animateCamera(
+				{center: {latitude: LAT, longitude: region.longitude}}
+			);
+			region.latitude = LAT;
+		}
+		if(region.longitude > LONG + 0.003){
+			this.map.animateCamera(
+				{center: {latitude: region.latitude, longitude: LONG + 0.003}}
+			);
+		}
+		if(region.longitude < LONG - 0.003){
+			this.map.animateCamera(
+				{center: {latitude: region.latitude, longitude: LONG - 0.003}}
+			);
+		}
 	}
 
 	render() {
@@ -27,8 +42,9 @@ export default class UCSBBMapView extends Component {
 			<View style={styles.container}>
 		  	  <MapView
 			    style = {styles.mapStyle}
-			    region = {this.state.region}
-			    onRegionChange={(region) => {this.onRegionChange}}
+			    ref = {r => this.map = r}
+			    initialRegion = {this.state.region}
+			    onRegionChangeComplete={(region) => {this.onRegionChangeComplete(region)}}
 			    mapType = "standard"
 				provider = {MapView.PROVIDER_GOOGLE}
 				showsUserLocation = {true}
