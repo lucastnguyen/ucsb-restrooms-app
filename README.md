@@ -31,6 +31,8 @@ install node.js from <https://nodejs.org/en/download/>, or use your favorite com
 
 `npm install react-native-collapsible-list`
 
+`npm install --save firebase`
+
 `git clone git@github.com:ucsb-cs48-w20/5pm-restroom.git` (one of us needs to enter our username and password!)
 
 `cd 5pm-restroom/app/UCSBB`
