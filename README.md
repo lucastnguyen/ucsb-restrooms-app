@@ -25,15 +25,15 @@ react native collapsible list (for the list on the bathrooms tab)
 
 install node.js from <https://nodejs.org/en/download/>, or use your favorite command line package manager (apt, pacman, homebrew, etc) to install npm
 
+`git clone git@github.com:ucsb-cs48-w20/5pm-restroom.git` (one of us needs to enter our username and password!)
+
+`cd 5pm-restroom/app/UCSBB`
+
 `npm install -g expo-cli`
 
 `npm install react-native-maps`
 
 `npm install react-native-collapsible-list`
-
-`git clone git@github.com:ucsb-cs48-w20/5pm-restroom.git` (one of us needs to enter our username and password!)
-
-`cd 5pm-restroom/app/UCSBB`
 
 `expo start`
 
