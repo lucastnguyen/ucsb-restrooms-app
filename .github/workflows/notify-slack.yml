@@ -2,8 +2,10 @@ name: "Slack PR Notification"
 on:
   # Trigger the workflow on pull request,
   # but only for the testing branch
-  - pull_request
-        
+  pull_request:
+    branches:
+    - "testing"
+
 env:
   SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         
