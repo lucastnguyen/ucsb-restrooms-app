@@ -1,0 +1,8 @@
+# Add 'Bathroom Navigation' to any changes to Map-related files in the 'app' folder
+Bathroom Navigation:
+  - app/**/*Map*
+
+# Add 'Bathroom Locations' to any file changes that deal with the display of the bathrooms list
+Bathroom Locations: 
+  - app/UCSBB/screens/BathroomsScreen.js
+  - app/UCSBB/components/ListElement.js
