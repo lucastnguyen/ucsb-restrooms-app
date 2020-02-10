@@ -8,9 +8,9 @@ env:
   SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         
 jobs:
-  triage:
+  notify-slack:
     runs-on: ubuntu-latest
     steps:
-    - uses: pullreminders/slack-action@testing
+    - uses: pullreminders/slack-action@master
       with:
         args: '{\"channel\":\"GSJPZSYRL\",\"text\":\"A new pull request has been made.\"}'

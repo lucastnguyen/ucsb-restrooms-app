@@ -2,15 +2,18 @@ import React, { Component } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { View, StyleSheet, Dimensions } from 'react-native';
 
+const LAT = 34.413963;
+const LONG = -119.846446;
+
 export default class UCSBBMapView extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			region: {
-	          		latitude: 34.413963,
-				longitude: -119.846446,
-				latitudeDelta: 0.00205,
-				longitudeDelta: 0.00222,
+	      latitude: LAT,
+				longitude: LONG,
+				latitudeDelta: 0.02305,
+				longitudeDelta: 0.01055,
 			},
 		}
 	}
@@ -27,10 +30,10 @@ export default class UCSBBMapView extends Component {
 			    region = {this.state.region}
 			    onRegionChange={(region) => {this.onRegionChange}}
 			    mapType = "standard"
-			    provider = {MapView.PROVIDER_GOOGLE}
-			    showsUserLocation = {true}
+				provider = {MapView.PROVIDER_GOOGLE}
+				showsUserLocation = {true}
 			    showsMyLocationButton = {true}
-			    minZoomLevel = {0}
+			    minZoomLevel = {15}
 			    mapPadding={{top: 0, right: 0, bottom: 50, left: 0}} // For position of location button
 			  >
 		  	  <Marker
