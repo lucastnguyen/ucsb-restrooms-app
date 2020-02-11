@@ -9,6 +9,20 @@ import {
 import CollapsibleList from "react-native-collapsible-list";
 import ListElement from '../components/ListElement';
 import { MonoText } from '../components/StyledText';
+import {db} from '../firebase.js';
+
+var buildingRef = db.ref('/Buildings');
+var buildingList
+
+buildingRef.once("value").then(function(snapshot){
+  buildingList = Object.keys(snapshot.val()); // array of buildings
+});
+
+buildingRef.on("value", function(snapshot) {
+  console.log(snapshot.val());
+}, function (errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
 
 export default function BathroomsScreen() {
   return (
@@ -22,7 +36,7 @@ export default function BathroomsScreen() {
               wrapperStyle={styles.wrapperCollapsibleList}
               buttonContent={
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>Phelps Hall</Text>
+                  <Text style={styles.buttonText}>{buildingList[0]}</Text>
                 </View>
               }>
               <View style={styles.collapsibleItemFemale}>
@@ -37,7 +51,7 @@ export default function BathroomsScreen() {
               wrapperStyle={styles.wrapperCollapsibleList}
               buttonContent={
                 <View style={styles.button}>
-                  <Text style={styles.buttonText}>South Hall</Text>
+                  <Text style={styles.buttonText}>{buildingList[1]}</Text>
                 </View>
               }>
               <View style={styles.collapsibleItemMale}>
