@@ -25,11 +25,26 @@ export default function BathroomsScreen() {
                   <Text style={styles.buttonText}>Phelps Hall</Text>
                 </View>
               }>
+              <View style={styles.collapsibleItemMale}>
+                <ListElement text='Phelps 1166' gender='male' access='wheelchair' />
+              </View>
+              <View style={styles.collapsibleItemFemale}>
+                <ListElement text='Phelps 1168' gender='female' access='wheelchair' />
+              </View>
+              <View style={styles.collapsibleItemMale}>
+                <ListElement text='Phelps 1501' gender='male' access='none' />
+              </View>
               <View style={styles.collapsibleItemFemale}>
                 <ListElement text='Phelps 2501' gender='female' access='wheelchair' />
               </View>
               <View style={styles.collapsibleItemMale}>
+                <ListElement text='Phelps 2541' gender='male' access='none' />
+              </View>
+              <View style={styles.collapsibleItemMale}>
                 <ListElement text='Phelps 3501' gender='male' access='wheelchair' />
+              </View>
+              <View style={styles.collapsibleItemFemale}>
+                <ListElement text='Phelps 3541' gender='female' access='none' />
               </View>
           </CollapsibleList>
           <CollapsibleList
