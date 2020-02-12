@@ -19,20 +19,24 @@ export default class UCSBBMapView extends Component {
 	}
 
 	onRegionChangeComplete(region) {
-		if(region.latitude > LAT || region.latitude < LAT){
+		if(region.latitude > LAT + 0.003){
 			this.map.animateCamera(
-				{center: {latitude: LAT, longitude: region.longitude}}
-			);
-			region.latitude = LAT;
-		}
-		if(region.longitude > LONG + 0.003){
-			this.map.animateCamera(
-				{center: {latitude: region.latitude, longitude: LONG + 0.003}}
+				{center: {latitude: LAT + 0.003, longitude: region.longitude}}
 			);
 		}
-		if(region.longitude < LONG - 0.003){
+		if(region.latitude < LAT - 0.003){
 			this.map.animateCamera(
-				{center: {latitude: region.latitude, longitude: LONG - 0.003}}
+				{center: {latitude: LAT - 0.003, longitude: region.longitude}}
+			);
+		}
+		if(region.longitude > LONG + 0.009){
+			this.map.animateCamera(
+				{center: {latitude: region.latitude, longitude: LONG + 0.009}}
+			);
+		}
+		if(region.longitude < LONG - 0.0094){
+			this.map.animateCamera(
+				{center: {latitude: region.latitude, longitude: LONG - 0.0094}}
 			);
 		}
 	}
