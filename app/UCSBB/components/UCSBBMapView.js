@@ -40,7 +40,7 @@ export default class UCSBBMapView extends Component {
 						coordinate={{latitude: 34.415753, longitude: -119.84478,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Phelps Hall 1501, 2501, 3501"}
-						description={"Male"}
+						description={"Male (1501, 3501), Female (2501)"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.415253, longitude: -119.844708,}}
