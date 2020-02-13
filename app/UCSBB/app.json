@@ -13,8 +13,8 @@
     "orientation": "portrait",
     "icon": "./assets/images/ucsbb_icon.png",
     "splash": {
-      "image": "./assets/images/ucsbb_splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/images/centered_splash.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
