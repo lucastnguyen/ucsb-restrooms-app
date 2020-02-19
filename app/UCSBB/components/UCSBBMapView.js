@@ -23,6 +23,33 @@ export default class UCSBBMapView extends Component {
 	}
 
 	render() {
+		// var markers = [];
+		// markers.push(
+		// 	// To be replaced with data from firebase
+		// 	<Marker
+		// 				coordinate={{latitude: 34.416161, longitude: -119.844639,}}
+		// 				//title and description are temporary until onPress is set to open a pop up with bathrooms
+		// 				title={"Phelps Hall"}
+		// 				description={"Phelps 1501 Phelps 2501 Phelps 3501"}
+		//   	  />
+		// )
+		// return (
+		// 	<View style={styles.container}>
+		//   	  <MapView
+		// 	    style = {styles.mapStyle}
+		// 	    region = {this.state.region}
+		// 	    onRegionChange={(region) => {this.onRegionChange}}
+		// 	    mapType = "standard"
+		// 		provider = {MapView.PROVIDER_GOOGLE}
+		// 		showsUserLocation = {true}
+		// 	    showsMyLocationButton = {true}
+		// 	    minZoomLevel = {15}
+		// 	    mapPadding={{top: 0, right: 0, bottom: 50, left: 0}} // For position of location button
+		// 	  ></MapView>
+		// 	  {markers}
+		// 	  </MapView>
+		// 	</View>
+		// );
 		return (
 			<View style={styles.container}>
 		  	  <MapView
