@@ -11,6 +11,10 @@ Bathroom Details:
   - app/UCSBB/components/InfoIcon.js
   - app/UCSBB/components/ListElement.js
 
-# Add 'documentation' to any changes or additions to .md files
+# Add 'documentation' to any changes or additions to .md files in the 'team' folder
 documentation:
-  - ./**/*.md
+  - team/**/*.md
+  
+# Add 'test' to any changes or additions to testing-related files in the 'app' folder
+test:
+  - app/**/*.test.js
