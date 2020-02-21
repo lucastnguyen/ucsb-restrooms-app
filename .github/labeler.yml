@@ -5,4 +5,12 @@ Bathroom Navigation:
 # Add 'Bathroom Locations' to any file changes that deal with the display of the bathrooms list
 Bathroom Locations: 
   - app/UCSBB/screens/BathroomsScreen.js
+
+# Add 'Bathroom Details' to any file changes that deal with the bathroom specifics (gender, accessibility, etc.)
+Bathroom Details:
+  - app/UCSBB/components/InfoIcon.js
   - app/UCSBB/components/ListElement.js
+
+# Add 'documentation' to any changes or additions to .md files
+documentation:
+  - ./**/*.md
