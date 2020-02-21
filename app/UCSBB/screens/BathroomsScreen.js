@@ -77,6 +77,7 @@ export default function BathroomsScreen() {
       </View>
   );
 
+  
   /* <CollapsibleList
               numberOfVisibleItems={0}
               wrapperStyle={styles.wrapperCollapsibleList}
