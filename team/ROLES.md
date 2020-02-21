@@ -6,9 +6,9 @@
 | Reviewee (lab05)                 |  Derek Wang         |
 | Mid-Course Retro Leader (lab06)  |  Lucas Nguyen       |
 | Testing Coordinator (lab06)      |  Lucas Nguyen       |
-| Product Owner (lab06)            |                     |
-| Scrum Master (lab06)             |                     |
-| UX Coordinator (lab06)           |                     |
-| Documentation Coordinator (lab06)|                     |
-| Final presentation (week 9/10)   |                     |
-| Retro Leader (lab09)             |                     |
+| Product Owner (lab06)            |  Nick Arenberg      |
+| Scrum Master (lab06)             |  Cameron King       |
+| UX Coordinator (lab06)           |  Kimia Majd         |
+| Documentation Coordinator (lab06)|  Jack Yang          |
+| Final presentation (week 9/10)   |  Jack Yang          |
+| Retro Leader (lab09)             |  Derek Wang         |
