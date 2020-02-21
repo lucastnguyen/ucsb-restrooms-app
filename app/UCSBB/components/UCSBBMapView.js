@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { View, StyleSheet, Dimensions } from 'react-native';
+import {db} from '../firebase.js';
+
+var rootRef = db.ref('/Buildings');
 
 const LAT = 34.413963;
 const LONG = -119.846446;
@@ -27,11 +30,11 @@ export default class UCSBBMapView extends Component {
 		// markers.push(
 		// 	// To be replaced with data from firebase
 		// 	<Marker
-		// 				coordinate={{latitude: 34.416161, longitude: -119.844639,}}
-		// 				//title and description are temporary until onPress is set to open a pop up with bathrooms
-		// 				title={"Phelps Hall"}
-		// 				description={"Phelps 1501 Phelps 2501 Phelps 3501"}
-		//   	  />
+		//	coordinate={{latitude: 34.416161, longitude: -119.844639,}}
+		//	//title and description are temporary until onPress is set to open a pop up with bathrooms
+		//	title={"Phelps Hall"}
+		//	description={"Phelps 1501 Phelps 2501 Phelps 3501"}
+		//   />
 		// )
 		// return (
 		// 	<View style={styles.container}>

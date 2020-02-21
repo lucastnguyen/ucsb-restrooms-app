@@ -14,20 +14,17 @@ import {db} from '../firebase.js';
 var rootRef = db.ref('/Buildings');
 var buildingList;
 
-rootRef.once("value").then(function(snapshot){
-  var data = snapshot.val();
-  buildingList = Object.keys(data); // array of buildings
-  console.log("Testing Layer Root: " + snapshot.key);
-});
-
-// rootRef.child(buildingList[Counter]+roomList[Counter]).once("value").then(function(snapshot){
-//   propertyList = snapshot.val();
-// });
-
+// display data objects when database is modified
 rootRef.on("child_changed", function(snapshot) {
   console.log(snapshot.val());
 }, function (errorObject) {
   console.log("The read failed: " + errorObject.code);
+});
+
+// retrieve keys
+rootRef.on("value", function(snapshot){
+  var data = snapshot.val();
+  buildingList = Object.keys(data);
 });
 
 export default function BathroomsScreen() {
@@ -35,22 +32,25 @@ export default function BathroomsScreen() {
 
   for(var i=0; i<buildingList.length; i++){
     var views = [];
-
+    
     // retrieve children
-    var roomList;
-    rootRef.child("Phelps Hall").once("value").then(function(snapshot){
-      roomList = Object.keys(snapshot.val());
-      // console.log("Testing Layer 2: " + roomList);
-    }); 
-    // console.log("Testing Layer 3: " + roomList);
+    rootRef.child(buildingList[i]).on("value", function(snapshot){
+      var data = snapshot.val();
+      var roomList = Object.keys(data);
 
-    for (var j=0; j<2; j++){ 
-      views.push(
-        <View style={styles.collapsibleItemFemale}>
-            <ListElement text={buildingList[justifyContent]} gender='female' access='wheelchair' />
-        </View>
-      );
-    }
+      for (var j=0; j<roomList.length; j++){
+        room = roomList[j];
+        var flag = data[room].Accessibility;
+        var accessChair = ((flag=='True') ? 'wheelchair' : 'none');
+    
+        views.push(
+          <View style={styles.collapsibleItemFemale}>
+              <ListElement text={room} gender={data[room].Gender} access={accessChair} />
+          </View>
+        );
+      }
+    });
+
     lists.push(
         <CollapsibleList
             numberOfVisibleItems={0}
