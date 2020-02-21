@@ -77,6 +77,7 @@ export default function BathroomsScreen() {
       </View>
   );
 
+
   // return (
   //   <View style={styles.container}>
   //   <ScrollView
