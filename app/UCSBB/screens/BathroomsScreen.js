@@ -77,6 +77,116 @@ export default function BathroomsScreen() {
       </View>
   );
 
+//             <CollapsibleList
+//               numberOfVisibleItems={0}
+//               wrapperStyle={styles.wrapperCollapsibleList}
+//               buttonContent={
+//                 <View style={styles.button}>
+//                   <Text style={styles.buttonText}>Phelps Hall</Text>
+//                 </View>
+//               }>
+//               <View style={styles.collapsibleItemMale}>
+//                 <ListElement text='Phelps 1166' gender='male' access='wheelchair' />
+//               </View>
+//               <View style={styles.collapsibleItemFemale}>
+//                 <ListElement text='Phelps 1168' gender='female' access='wheelchair' />
+//               </View>
+//               <View style={styles.collapsibleItemMale}>
+//                 <ListElement text='Phelps 1501' gender='male' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemFemale}>
+//                 <ListElement text='Phelps 2501' gender='female' access='wheelchair' />
+//               </View>
+//               <View style={styles.collapsibleItemMale}>
+//                 <ListElement text='Phelps 2541' gender='male' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemMale}>
+//                 <ListElement text='Phelps 3501' gender='male' access='wheelchair' />
+//               </View>
+//               <View style={styles.collapsibleItemFemale}>
+//                 <ListElement text='Phelps 3541' gender='female' access='none' />
+//               </View>
+//           </CollapsibleList>
+//           <CollapsibleList
+//               numberOfVisibleItems={0}
+//               wrapperStyle={styles.wrapperCollapsibleList}
+//               buttonContent={
+//                 <View style={styles.button}>
+//                   <Text style={styles.buttonText}>South Hall</Text>
+//                 </View>
+//               }>
+//               <View style={styles.collapsibleItemMale}>
+//                 <ListElement text='South Hall 1636' gender='male' access='wheelchair' />
+//               </View>
+//           </CollapsibleList>
+//           <CollapsibleList
+//               numberOfVisibleItems={0}
+//               wrapperStyle={styles.wrapperCollapsibleList}
+//               buttonContent={
+//                 <View style={styles.button}>
+//                   <Text style={styles.buttonText}>Buchanan Hall</Text>
+//                 </View>
+//               }>
+//               <View style={styles.collapsibleItemFemale}>
+//                 <ListElement text='Buchanan Hall 1914' gender='female' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemMale}>
+//                 <ListElement text='Buchanan Hall 1944' gender='male' access='none' />
+//               </View>
+//           </CollapsibleList>
+//           <CollapsibleList
+//               numberOfVisibleItems={0}
+//               wrapperStyle={styles.wrapperCollapsibleList}
+//               buttonContent={
+//                 <View style={styles.button}>
+//                   <Text style={styles.buttonText}>Ellison Hall</Text>
+//                 </View>
+//               }>
+//               <View style={styles.collapsibleItemFemale}>
+//                 <ListElement text='Ellison Hall 1725' gender='female' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemMale}>
+//                 <ListElement text='Ellison Hall 1726' gender='male' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemFemale}>
+//                 <ListElement text='Ellison Hall 2634' gender='female' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemFemale}>
+//                 <ListElement text='Ellison Hall 2725' gender='female' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemMale}>
+//               <ListElement text='Ellison Hall 2726' gender='male' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemMale}>
+//               <ListElement text='Ellison Hall 3634' gender='male' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemFemale}>
+//               <ListElement text='Ellison Hall 3725' gender='female' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemMale}>
+//               <ListElement text='Ellison Hall 3726' gender='male' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemFemale}>
+//               <ListElement text='Ellison Hall 4725' gender='female' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemMale}>
+//               <ListElement text='Ellison Hall 4726' gender='male' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemFemale}>
+//               <ListElement text='Ellison Hall 5725' gender='female' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemMale}>
+//               <ListElement text='Ellison Hall 5726' gender='male' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemFemale}>
+//               <ListElement text='Ellison Hall 6725' gender='female' access='none' />
+//               </View>
+//               <View style={styles.collapsibleItemMale}>
+//               <ListElement text='Ellison Hall 6726' gender='male' access='none' />
+//               </View>
+
+//           </CollapsibleList>
+
   // return (
   //   <View style={styles.container}>
   //   <ScrollView
