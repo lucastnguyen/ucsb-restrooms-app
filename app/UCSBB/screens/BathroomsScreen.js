@@ -40,11 +40,12 @@ export default function BathroomsScreen() {
 
       for (var j=0; j<roomList.length; j++){
         room = roomList[j];
-        var flag = data[room].Accessibility;
-        var accessChair = ((flag=='True') ? 'wheelchair' : 'none');
+        var flag_access = data[room].Accessibility;
+        var accessChair = ((flag_access=='True') ? 'wheelchair' : 'none');
+        var listStyle = ((data[room].Gender=='male') ? styles.collapsibleItemMale : styles.collapsibleItemFemale);
     
         views.push(
-          <View style={styles.collapsibleItemFemale}>
+          <View style={listStyle} key={buildingList[i]+roomList[j]}>
               <ListElement text={room} gender={data[room].Gender} access={accessChair} />
           </View>
         );
@@ -53,6 +54,7 @@ export default function BathroomsScreen() {
 
     lists.push(
         <CollapsibleList
+            key={buildingList[i]}
             numberOfVisibleItems={0}
             wrapperStyle={styles.wrapperCollapsibleList}
             buttonContent={
@@ -68,6 +70,7 @@ export default function BathroomsScreen() {
   return (
       <View style={styles.container}>
       <ScrollView
+        key={0}
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
         <View style={styles.container}>   
@@ -77,7 +80,6 @@ export default function BathroomsScreen() {
       </View>
   );
 
-  
   /* <CollapsibleList
               numberOfVisibleItems={0}
               wrapperStyle={styles.wrapperCollapsibleList}
