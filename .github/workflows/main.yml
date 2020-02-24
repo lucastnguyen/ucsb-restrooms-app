@@ -11,5 +11,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Run tests
-      run: npm run test
+    - name: Run Tests
+      run: |
+        cd app/UCSBB/
+        npm run test
