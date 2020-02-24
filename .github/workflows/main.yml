@@ -12,7 +12,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run Tests
       run: |
-        npm init
         npm install jest
         cd 
         cd app/UCSBB/
