@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1582525616729" clover="3.2.0">
+  <project timestamp="1582525616730" name="All files">
+    <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="4" coveredelements="4" complexity="0" loc="3" ncloc="3" packages="1" files="1" classes="1"/>
+    <file name="StyledText.js" path="/Users/lucas/Desktop/School Stuff/CS48/5pm-restroom/app/UCSBB/components/StyledText.js">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
