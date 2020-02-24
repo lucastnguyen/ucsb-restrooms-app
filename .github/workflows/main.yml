@@ -12,6 +12,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run Tests
       run: |
-        npm install jest
+        npm install
         cd ./app/UCSBB/
         jest
