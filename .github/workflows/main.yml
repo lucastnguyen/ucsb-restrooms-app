@@ -13,6 +13,5 @@ jobs:
     - name: Run Tests
       run: |
         npm install jest
-        cd 
-        cd app/UCSBB/
+        cd ./app/UCSBB/
         jest
