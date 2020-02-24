@@ -18,8 +18,4 @@ jobs:
         ls
         npm install jest
         ls
-        echo 'cd to app/UCSBB/'
-        cd app/UCSBB/
-        echo 'made it'
-        ls
         npm run test
