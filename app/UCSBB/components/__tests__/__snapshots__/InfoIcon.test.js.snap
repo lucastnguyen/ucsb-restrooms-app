@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Info Icon should render the Female icon and match to snapshot 1`] = `<Text />`;
+
+exports[`Info Icon should render the Male icon and match to snapshot 1`] = `<Text />`;
+
+exports[`Info Icon should render the Neutral icon and match to snapshot 1`] = `<Text />`;
+
+exports[`Info Icon should render the Wheelchair icon and match to snapshot 1`] = `<Text />`;
