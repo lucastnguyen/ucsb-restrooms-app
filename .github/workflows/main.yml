@@ -13,5 +13,8 @@ jobs:
     - name: Run Tests
       run: |
         npm install jest
+        ls
+        echo 'cd to app/UCSBB/'
         cd app/UCSBB/
+        echo 'made it'
         npm run test
