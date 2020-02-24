@@ -13,9 +13,4 @@ jobs:
     - name: Run Tests
       run: |
         npm install jest
-        npm install -g expo-cli
-        npm install react-native-maps
-        npm install react-native-collapsible-list
-        npm install firebase
-        cd app/UCSBB/
-        npm run test
+        jest
