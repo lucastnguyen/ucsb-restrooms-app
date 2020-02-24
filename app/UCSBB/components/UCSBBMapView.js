@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions, TouchableOpacity, Text } from 'react-native';
 import {db} from '../firebase.js';
+//import console = require('console');
 
 var rootRef = db.ref('/Buildings');
+var count = 0;
+var coord = {latitude: 34.415743, longitude: -119.84478,};
 
 const LAT = 34.413963;
 const LONG = -119.846446;
+const {width, height} = Dimensions.get('window');
 
 export default class UCSBBMapView extends Component {
 	constructor(props) {
@@ -18,191 +22,242 @@ export default class UCSBBMapView extends Component {
 				latitudeDelta: 0.02305,
 				longitudeDelta: 0.01055,
 			},
-		}
-	}
+			tap: null,
+			initial: true,
+			polygon: [
+				{
+						latitude: 34.412318193669776,
+						longitude: -119.84536148607731
+				},
+				{
+						latitude: 34.412318193669776,
+						longitude: -119.84447099268436
+				},
+				{
+					latitude: 34.41173926759923,
+					longitude: -119.84447099268436
+				},
+				{
+						latitude: 34.41173926759923,
+						longitude: -119.84536148607731
+				}
+			],
+			markers: [{
+				title: 'Psychology 1318(?)',
+				description: 'Male',
+				pinColor: '#0000FF',
+				coordinates: {
+					latitude: 34.411995,
+					longitude: -119.84523
+				},
+			},
+			{
+				title: 'Psychology East 1801',
+				description: 'Female',
+				pinColor: 'rgb(255,20,147)',
+				coordinates: {
+					latitude: 34.412166,
+					longitude: -119.844653
+				},
+			},
+			{
+				title: 'Psychology 1803',
+				description: 'Male',
+				pinColor: '#0000FF',
+				coordinates: {
+					latitude: 34.412166,
+					longitude: -119.844539
+				},
+			},
+			{
+				title: 'Psychology 1317',
+				description: 'Female',
+				pinColor: 'rgb(255,20,147)',
+				coordinates: {
+					latitude: 34.411816,
+					longitude: -119.84523
+				}, 
+			}]
+		};
+	}//Whenever state changes, latitude and longitude returns to whatever the contructor set them as
 
-	onRegionChange(region) {
-		this.setState({region});
+	//onRegionChange(region) {
+	//	this.setState({region});
+	//}
+
+	turnInitialRegionOff(){
+		this.state.initial = false;
 	}
 
 	render() {
-		// var markers = [];
-		// markers.push(
-		// 	// To be replaced with data from firebase
-		// 	<Marker
-		//	coordinate={{latitude: 34.416161, longitude: -119.844639,}}
-		//	//title and description are temporary until onPress is set to open a pop up with bathrooms
-		//	title={"Phelps Hall"}
-		//	description={"Phelps 1501 Phelps 2501 Phelps 3501"}
-		//   />
-		// )
-		// return (
-		// 	<View style={styles.container}>
-		//   	  <MapView
-		// 	    style = {styles.mapStyle}
-		// 	    region = {this.state.region}
-		// 	    onRegionChange={(region) => {this.onRegionChange}}
-		// 	    mapType = "standard"
-		// 		provider = {MapView.PROVIDER_GOOGLE}
-		// 		showsUserLocation = {true}
-		// 	    showsMyLocationButton = {true}
-		// 	    minZoomLevel = {15}
-		// 	    mapPadding={{top: 0, right: 0, bottom: 50, left: 0}} // For position of location button
-		// 	  ></MapView>
-		// 	  {markers}
-		// 	  </MapView>
-		// 	</View>
-		// );
 		return (
 			<View style={styles.container}>
 		  	  <MapView
-			    style = {styles.mapStyle}
-			    region = {this.state.region}
-			    onRegionChange={(region) => {this.onRegionChange}}
-			    mapType = "standard"
-				provider = {MapView.PROVIDER_GOOGLE}
-				showsUserLocation = {true}
-			    showsMyLocationButton = {true}
-			    minZoomLevel = {15}
-			    mapPadding={{top: 0, right: 0, bottom: 50, left: 0}} // For position of location button
-			  >
+						style = {styles.mapStyle}
+						region = {this.state.initial ? this.state.region : region}
+						region = {this.state.region} PROBLEM
+						//onRegionChange={(region) => {this.onRegionChange}}
+						mapType = "standard"
+						provider = {MapView.PROVIDER_GOOGLE}
+						showsUserLocation = {true}
+						showsMyLocationButton = {true}
+						minZoomLevel = {15}
+						mapPadding={{top: 0, right: 0, bottom: height/10, left: 0}}
+						onPress={(e) => this.setState({ tap: e.nativeEvent.coordinate })}>
+					
+
+						{// FOR PHYCHOLOGY AND PHYCHOLOGY EAST BUILDINGS 
+							this.state.tap && this.state.tap.latitude < 34.412318193669776 && this.state.tap.longitude > -119.84536148607731
+							&& this.state.tap.latitude > 34.41173926759923 && this.state.tap.longitude < -119.84447099268436 ?
+
+							this.state.markers.map(marker => (
+								<MapView.Marker 
+									coordinate={marker.coordinates}
+									title={marker.title}
+									description={marker.description}
+									pinColor={marker.pinColor}/>))
+								
+									: console.log("Not Pressing area")
+						}
+
+					<MapView.Polygon 
+						coordinates = {this.state.polygon}
+						fillColor= {"#0000FF"}
+					/>
+
 		  	  <Marker
-						coordinate={{latitude: 34.415753, longitude: -119.84478,}}
+						coordinate={{latitude: 34.416753, longitude: -119.84478,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Phelps Hall 1501, 2501, 3501"}
 						description={"Male (1501, 3501), Female (2501)"}
+						//pinColor = {"rgb(255,20,147)"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.415253, longitude: -119.844708,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Buchanan Hall 1914"}
 						description={"Female"}
+						pinColor = {"rgb(255,20,147)"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.415259, longitude: -119.844413,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Buchanan Hall 1944"}
 						description={"Male"}
+						pinColor = {"#0000FF"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.415451, longitude: -119.845333,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Ellison Hall 1726"}
 						description={"Male"}
+						pinColor = {"#0000FF"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.415435, longitude: -119.845231,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Ellison Hall 1725"}
 						description={"Female"}
+						pinColor = {"rgb(255,20,147)"}
 		  	  />
-		  	  <Marker
-						coordinate={{latitude: 34.411995, longitude: -119.84523,}}
-						//title and description are temporary until onPress is set to open a pop up with bathrooms
-						title={"Psychology 1318(?)"}
-						description={"Male"}
-		  	  />
-		  	  <Marker
-						coordinate={{latitude: 34.411816, longitude: -119.84523,}}
-						//title and description are temporary until onPress is set to open a pop up with bathrooms
-						title={"Psychology 1317"}
-						description={"Female"}
-		  	  />
-		  	  <Marker
-						coordinate={{latitude: 34.412166, longitude: -119.844653,}}
-						//title and description are temporary until onPress is set to open a pop up with bathrooms
-						title={"Psychology East 1801"}
-						description={"Female"}
-		  	  />
-		  	  <Marker
-						coordinate={{latitude: 34.412166, longitude: -119.844539,}}
-						//title and description are temporary until onPress is set to open a pop up with bathrooms
-						title={"Psychology 1803"}
-						description={"Male"}
-		  	  />
+		  	  
 		  	  <Marker
 						coordinate={{latitude: 34.411833, longitude: -119.843739,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Life Science 1102"}
-						description={"FeMale"}
+						description={"Female"}
+						pinColor = {"rgb(255,20,147)"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.411833, longitude: -119.843689,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Life Science 1104"}
 						description={"Male"}
+						pinColor = {"#0000FF"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.412513, longitude: -119.843853,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Noble Hall 1210"}
 						description={"Female"}
+						pinColor = {"rgb(255,20,147)"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.412579, longitude: -119.844033,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Noble Hall 1204"}
 						description={"Male"}
+						pinColor = {"#0000FF"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.413201, longitude: -119.843908,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Earth Sciences 1110, 2110"}
 						description={"Female"}
+						pinColor = {"rgb(255,20,147)"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.413323, longitude: -119.843901,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Earth Sciences 1106, 2106"}
 						description={"Male"}
+						pinColor = {"#0000FF"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.413979, longitude: -119.843315,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Broida Hall 1006"}
 						description={"Female"}
+						pinColor = {"rgb(255,20,147)"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.413956, longitude: -119.843315,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Broida Hall 1014"}
 						description={"Male"}
+						pinColor = {"#0000FF"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.415512, longitude: -119.843586,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Physical Sciences North 1636"}
 						description={"Female"}
+						pinColor = {"rgb(255,20,147)"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.415412, longitude: -119.843586,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"Physical Sciences North 1634"}
 						description={"Male"}
+						pinColor = {"#0000FF"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.41501, longitude: -119.846243,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"North Hall 1126"}
 						description={"Male"}
+						pinColor = {"#0000FF"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.414921, longitude: -119.846235,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"North Hall 1132"}
 						description={"Female"}
+						pinColor = {"rgb(255,20,147)"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.415275, longitude: -119.846712,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"North Hall 1021"}
 						description={"Male"}
+						pinColor = {"#0000FF"}
 		  	  />
 		  	  <Marker
 						coordinate={{latitude: 34.415275, longitude: -119.846914,}}
 						//title and description are temporary until onPress is set to open a pop up with bathrooms
 						title={"North Hall 1025"}
 						description={"All Gender"}
+						pinColor = {"#32CD32"}
 		  	  />
 			  </MapView>
 			</View>
