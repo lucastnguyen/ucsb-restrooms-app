@@ -19,3 +19,4 @@ jobs:
         npm install jest
         ls
         npm run test
+        echo 'DONE WITH TESTS'
