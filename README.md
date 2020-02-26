@@ -1,3 +1,7 @@
+### Continuous Integration (CI)
+
+Each time a push is done, the `CI Testing` github action will start which runs all tests against the current branch.
+
 # UCSB Bathrooms
 ## Project Summary
 ### Description
