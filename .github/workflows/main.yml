@@ -12,11 +12,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run Tests
       run: |
-        ls
-        echo 'cd to app/UCSBB/'
         cd app/UCSBB/
-        ls
         npm install jest
-        ls
+        echo 'Running All Tests'
         npm test
-        echo 'Tests Finished'
