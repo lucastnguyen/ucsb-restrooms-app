@@ -76,9 +76,9 @@ export default class UCSBBMapView extends Component {
 		  	  <MapView
 			    style = {styles.mapStyle}
 			    region = {this.state.region}
+			    forwardRef = {map => {this.map = map}}
 			    onRegionChangeComplete={(region) => {this.onRegionChangeComplete(region)}}
 			    mapType = "standard"
-			    ref = {map => {this.map = map}}
 				provider = {MapView.PROVIDER_GOOGLE}
 				showsUserLocation = {true}
 			    showsMyLocationButton = {true}

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tab Bar Icon should render the focused Bathrooms icon and match to snapshot 1`] = `<Text />`;
+
+exports[`Tab Bar Icon should render the focused Map icon 1`] = `<Text />`;
+
+exports[`Tab Bar Icon should render the focused Settings icon and match to snapshot 1`] = `<Text />`;
+
+exports[`Tab Bar Icon should render the unfocused Bathrooms icon and match to snapshot 1`] = `<Text />`;
+
+exports[`Tab Bar Icon should render the unfocused Map icon 1`] = `<Text />`;
+
+exports[`Tab Bar Icon should render the unfocused Settings icon and match to snapshot 1`] = `<Text />`;
