@@ -11,6 +11,10 @@ import ListElement from '../components/ListElement';
 import { MonoText } from '../components/StyledText';
 import {db} from '../firebase.js';
 import Accordian from '../components/Accordian'
+import { YellowBox } from 'react-native';
+
+YellowBox.ignoreWarnings(['VirtualizedLists should never be nested']);
+YellowBox.ignoreWarnings(['Warning: Failed prop type: Invalid prop']);
 
 var rootRef = db.ref('/Buildings');
 var buildingList;
@@ -52,6 +56,7 @@ export default function BathroomsScreen() {
         }
         //push room names, gender, and accessibility into array called views
         views.push({
+          ID: buildingList[i]+roomList[j],
           room: rootRef.child(buildingList[i]).child(roomList[j]).key,
           gender: data[roomList[j]].Gender,
           access: accessChair,

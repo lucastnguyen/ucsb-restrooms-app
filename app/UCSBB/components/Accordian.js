@@ -30,7 +30,7 @@ export default class Accordian extends Component{
                     data={this.state.data}
                     numColumns={1}
                     scrollEnabled={false}
-                    renderItem={({item, index}) => 
+                    renderItem={({item, index}) => (
                         <View>
                             <TouchableOpacity style={[styles.childRow, item.gender == 'male' ? styles.male : styles.female]}>
                                 <Text style={[styles.font, styles.listItemText]} >{item.room}</Text>
@@ -42,7 +42,9 @@ export default class Accordian extends Component{
                             </TouchableOpacity>
                             <View style={styles.childHr}/>
                         </View>
-                    }/>
+                    )}
+                    keyExtractor={item => item.ID}
+                    />
                 </View>
             }
             
