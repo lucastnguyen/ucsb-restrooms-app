@@ -72,30 +72,6 @@ export default class UCSBBMapView extends Component {
 	}
 	constructor(props) {
 		super(props);
-		//console.log("This is " + buildingList);
-		//for(var i=0; i<buildingList.length; i++){
-		//    views = [];
-		    /*
-		    // retrieve children
-		    rootRef.child(buildingList[i]).on("value", function(snapshot){
-		      var data = snapshot.val();
-		      var roomList = Object.keys(data);
-
-		      for (var j=0; j<roomList.length; j++){
-		        var room = roomList[j];
-		        var lat = parseFloat(data[room].Latitude);
-		        var long = parseFloat(data[room].Longitude);
-		        //console.log(lat)
-		        console.log("Longitude: " + long)
-		        views.push(
-		              { 
-		              	title: {room},
-		              	coordinates: {latitude: {lat}, longitude: {long},}, 
-		              }
-		        );
-		      }
-		    });*/
-		//}
 		this.state = {
 			region: {
 	      		latitude: LAT,
@@ -110,12 +86,9 @@ export default class UCSBBMapView extends Component {
 
 	onRegionChange(region) {
 		this.setState({region});
-		//console.log(this.state.buildings);
 	}
 
 	render() {
-		//console.log(this.state.buildings);
-		//console.log(this.state.marker);
 		return (
 			<View style={styles.container}>
 		  	  <MapView
@@ -130,7 +103,7 @@ export default class UCSBBMapView extends Component {
 			    mapPadding={{top: 0, right: 0, bottom: 50, left: 0}} // For position of location button
 			  >
 		  	  {
-		  	  	this.state.markers.map(marker => (
+		  	  	this.state.markers.map((marker,index) => (
 		  	  		<MapView.Marker
 		  	  			coordinate = {marker.coordinates}
 		  	  			title = {marker.title}
