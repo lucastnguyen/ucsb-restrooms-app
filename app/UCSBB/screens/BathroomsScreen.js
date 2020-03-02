@@ -43,7 +43,9 @@ export default function BathroomsScreen() {
         var flag_access = data[room].Accessibility;
         var accessChair = ((flag_access=='True') ? 'wheelchair' : 'none');
         var listStyle = ((data[room].Gender=='male') ? styles.collapsibleItemMale : styles.collapsibleItemFemale);
-    
+        if (data[room].Gender=='neutral') {
+          listStyle = styles.collapsibleItemNeutral;
+        }
         views.push(
           <View style={listStyle} key={buildingList[i]+roomList[j]}>
               <ListElement text={room} gender={data[room].Gender} access={accessChair} />

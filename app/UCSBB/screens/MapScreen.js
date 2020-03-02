@@ -17,7 +17,7 @@ import { MonoText } from '../components/StyledText';
 
 export default function MapScreen() {
   return (
-    <UCSBBMapView />
+    <UCSBBMapView/>
   );
 }
 

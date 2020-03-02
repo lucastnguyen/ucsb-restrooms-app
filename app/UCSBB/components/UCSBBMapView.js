@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions, TouchableOpacity, Text } from 'react-native';
 import {db} from '../firebase.js';
+//import console = require('console');
 
 var rootRef = db.ref('/Buildings');
 console.log(rootRef)
@@ -18,17 +19,15 @@ rootRef.on("child_changed", function(snapshot) {
 rootRef.on("value", (snapshot) =>{
   var data = snapshot.val();
   buildingList = Object.keys(data);
-  //console.log(buildingList)
 });
 
 var lists = [];
-//console.log(buildingList)
 
 const LAT = 34.413963;
 const LONG = -119.846446;
+const {width, height} = Dimensions.get('window');
 
 export default class UCSBBMapView extends Component {
-
 
 	componentDidMount(){
 		rootRef.on("value", (snapshot) =>{
@@ -42,14 +41,31 @@ export default class UCSBBMapView extends Component {
 			      var roomList = Object.keys(data);
 
 			      for (var j=0; j<roomList.length; j++){
-			        var room = roomList[j];
+					var room = roomList[j];
+					var mtitle = buildingList[i] + " " + room; 
 			        var lat = data[room].Latitude;
-			        var long = data[room].Longitude;
-			        //console.log(lat);
+					var long = data[room].Longitude;
+					var gender = data[room].Gender;
+					var genderColor = "rgb(255,20,147)";
+
+					if(gender == "female"){
+						genderColor = "rgb(255,20,147)";
+						gender = "Female";
+					}
+					else if(gender == "male"){
+						genderColor = "#0000FF";
+						gender = "Male";
+					}
+					else{
+						genderColor = "#32CD32";
+						gender = "All Gender";
+					}
 			        views.push(
 			              { 
-			              	title: room,
-			              	coordinates: {latitude: lat, longitude: long,}, 
+			              	title: mtitle,
+							coordinates: {latitude: lat, longitude: long,}, 
+							pinColor: genderColor,  
+							description: gender,
 			              }
 			        );
 			      }
@@ -57,7 +73,6 @@ export default class UCSBBMapView extends Component {
 			    );
 
 			}
-			//console.log("This view is " + views[0].title);
 			this.setState({region: {
 	      		latitude: LAT,
 				longitude: LONG,
@@ -66,9 +81,7 @@ export default class UCSBBMapView extends Component {
 			},
 			buildings: buildingList, 
 			markers: views,});
-			//console.log();
 		});
-		//console.log(buildingList);
 	}
 	constructor(props) {
 		super(props);
@@ -88,14 +101,33 @@ export default class UCSBBMapView extends Component {
 		this.setState({region});
 	}
 
+	onRegionChangeComplete(region) {
+		if(region.latitude > LAT + 0.0052){
+			region.latitude = LAT + 0.0052;
+		}
+		if(region.latitude < LAT - 0.0072){
+			region.latitude = LAT - 0.0072;
+		}
+		if(region.longitude > LONG + 0.008){
+			region.longitude = LONG + 0.008;
+		}
+		if(region.longitude < LONG - 0.0094){
+			region.longitude = LONG - 0.0094;
+		}
+		this.map.animateCamera(
+			{center: {latitude: region.latitude, longitude: region.longitude}}
+		);
+	}
+
 	render() {
 		return (
 			<View style={styles.container}>
 		  	  <MapView
 			    style = {styles.mapStyle}
 			    region = {this.state.region}
-			    onRegionChange={(region) => {this.onRegionChange}}
+			    onRegionChangeComplete={(region) => {this.onRegionChangeComplete(region)}}
 			    mapType = "standard"
+			    ref = {map => {this.map = map}}
 				provider = {MapView.PROVIDER_GOOGLE}
 				showsUserLocation = {true}
 			    showsMyLocationButton = {true}
@@ -105,8 +137,11 @@ export default class UCSBBMapView extends Component {
 		  	  {
 		  	  	this.state.markers.map((marker,index) => (
 		  	  		<MapView.Marker
+		  	  			key = {index}
 		  	  			coordinate = {marker.coordinates}
-		  	  			title = {marker.title}
+						title = {marker.title}
+						pinColor = {marker.pinColor}
+						description = {marker.description}
 		  	  		/>))
 		  	  }
 			  </MapView>
