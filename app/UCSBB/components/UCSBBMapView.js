@@ -102,14 +102,14 @@ export default class UCSBBMapView extends Component {
 	}
 
 	onRegionChangeComplete(region) {
-		if(region.latitude > LAT + 0.001){
-			region.latitude = LAT + 0.001;
+		if(region.latitude > LAT + 0.0052){
+			region.latitude = LAT + 0.0052;
 		}
-		if(region.latitude < LAT - 0.001){
-			region.latitude = LAT - 0.001;
+		if(region.latitude < LAT - 0.0072){
+			region.latitude = LAT - 0.0072;
 		}
-		if(region.longitude > LONG + 0.009){
-			region.longitude = LONG + 0.009;
+		if(region.longitude > LONG + 0.008){
+			region.longitude = LONG + 0.008;
 		}
 		if(region.longitude < LONG - 0.0094){
 			region.longitude = LONG - 0.0094;
