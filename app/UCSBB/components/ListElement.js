@@ -11,7 +11,7 @@ export default function ListElement(props) {
         {(props.text + whitespace).slice(0,18)}
         {props.access=='wheelchair' ? <InfoIcon name = 'wheelchair' /> : <>{'  '}</>}
         {' '}
-        <InfoIcon name = {props.gender} />
+        {props.access=='neutral' ? <InfoIcon name = 'user' /> : <InfoIcon name = {props.gender} />}
         </Text>
       );
 
