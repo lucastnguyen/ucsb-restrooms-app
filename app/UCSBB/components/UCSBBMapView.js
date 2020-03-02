@@ -101,14 +101,33 @@ export default class UCSBBMapView extends Component {
 		this.setState({region});
 	}
 
+	onRegionChangeComplete(region) {
+		if(region.latitude > LAT + 0.001){
+			region.latitude = LAT + 0.001;
+		}
+		if(region.latitude < LAT - 0.001){
+			region.latitude = LAT - 0.001;
+		}
+		if(region.longitude > LONG + 0.009){
+			region.longitude = LONG + 0.009;
+		}
+		if(region.longitude < LONG - 0.0094){
+			region.longitude = LONG - 0.0094;
+		}
+		this.map.animateCamera(
+			{center: {latitude: region.latitude, longitude: region.longitude}}
+		);
+	}
+
 	render() {
 		return (
 			<View style={styles.container}>
 		  	  <MapView
 			    style = {styles.mapStyle}
 			    region = {this.state.region}
-			    onRegionChange={(region) => {this.onRegionChange}}
+			    onRegionChangeComplete={(region) => {this.onRegionChangeComplete(region)}}
 			    mapType = "standard"
+			    ref = {map => {this.map = map}}
 				provider = {MapView.PROVIDER_GOOGLE}
 				showsUserLocation = {true}
 			    showsMyLocationButton = {true}
