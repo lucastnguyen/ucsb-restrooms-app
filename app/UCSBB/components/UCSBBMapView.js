@@ -75,8 +75,9 @@ export default class UCSBBMapView extends Component {
 			<View style={styles.container}>
 		  	  <MapView
 			    style = {styles.mapStyle}
-			    region = {this.state.region}
-			    forwardRef = {map => {this.map = map}}
+				region = {this.state.region}
+				//forwardRef = {map => {this.map = map}}
+				ref={(map) => { this.map = map; }}
 			    onRegionChangeComplete={(region) => {this.onRegionChangeComplete(region)}}
 			    mapType = "standard"
 				provider = {MapView.PROVIDER_GOOGLE}
