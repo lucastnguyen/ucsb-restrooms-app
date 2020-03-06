@@ -15,8 +15,8 @@ export default class UCSBBMapView extends Component {
 			region: {
 	      latitude: LAT,
 				longitude: LONG,
-				latitudeDelta: 0.02305,
-				longitudeDelta: 0.01055,
+				latitudeDelta: 0.0001015,
+				longitudeDelta: 0.000911,
 			},
 		}
 	}
@@ -76,9 +76,9 @@ export default class UCSBBMapView extends Component {
 		  	  <MapView
 			    style = {styles.mapStyle}
 			    region = {this.state.region}
+			    ref = {map => {this.map = map}}
 			    onRegionChangeComplete={(region) => {this.onRegionChangeComplete(region)}}
 			    mapType = "standard"
-			    ref = {map => {this.map = map}}
 				provider = {MapView.PROVIDER_GOOGLE}
 				showsUserLocation = {true}
 			    showsMyLocationButton = {true}
