@@ -29,7 +29,7 @@ export default class Home extends Component {
 
   //two arrays that hold the 3 bathroom gender preferences and the colors that coorespond to each
   genderPreferences = ['All', 'Male', 'Female'];
-  colors = ['red', 'cyan', 'pink'];
+  colors = ['#30fc7f', '#aae2f0', '#f9bcd7'];
 
   //gives the title bar a title
   static navigationOptions = () => {
