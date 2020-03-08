@@ -8,6 +8,12 @@ var rootRef = db.ref('/Buildings');
 const LAT = 34.413963;
 const LONG = -119.846446;
 
+export const getCurrentLocation = () => {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(position => resolve(position), e => reject(e));
+  });
+};
+
 export default class UCSBBMapView extends Component {
 	constructor(props) {
 		super(props);
@@ -20,6 +26,21 @@ export default class UCSBBMapView extends Component {
 			},
 		}
 	}
+
+	componentDidMount() {
+    return getCurrentLocation().then(position => {
+      if (position) {
+        this.setState({
+          region: {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            latitudeDelta: 0.003,
+            longitudeDelta: 0.003,
+          },
+        });
+      }
+    });
+  }
 
 	onRegionChange(region) {
 		this.setState({region});
