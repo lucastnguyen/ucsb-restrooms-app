@@ -33,9 +33,11 @@ firebase
 
 install node.js from <https://nodejs.org/en/download/>, or use your favorite command line package manager (apt, pacman, homebrew, etc) to install npm
 
-`git clone git@github.com:ucsb-cs48-w20/5pm-restroom.git\ncd 5pm-restroom/app/UCSBB'
+```git clone git@github.com:ucsb-cs48-w20/5pm-restroom.git
 
-'npm install -g expo-cli
+cd 5pm-restroom/app/UCSBB
+
+npm install -g expo-cli
 
 npm install react-native-maps
 
@@ -45,7 +47,7 @@ npm install react-native-collapsible-list
 
 npm install --save firebase
 
-expo start`
+expo start```
 
 on a computer:
 
