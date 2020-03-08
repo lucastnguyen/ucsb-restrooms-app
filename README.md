@@ -42,7 +42,7 @@ npm install -g expo-cli
 
 npm install react-native-maps
 
-npm i react-native-elements
+npm install react-native-elements
 
 npm install react-native-collapsible-list
 
