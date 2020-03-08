@@ -53,15 +53,15 @@ expo start
 
 on a computer:
 
-to open in an Android simulator, type `a` in the command line or click the "run on android" button in the browser window that opens on localhost:19002
+- to open in an Android simulator, type `a` in the command line or click the "run on android" button in the browser window that opens on localhost:19002
 
-to open in an iOS simulator, type `i` in the command line or click the "run on iOS" button in the browser window that opens on localhost:19002
+- to open in an iOS simulator, type `i` in the command line or click the "run on iOS" button in the browser window that opens on localhost:19002
 
 on a mobile device:
 
-install expo on your mobile device from the Apple App Store/Google Play
+- install expo on your mobile device from the Apple App Store/Google Play
 
-scan the QR code that appears in the command line or the one on localhost:19002 to open the app in expo
+- scan the QR code that appears in the command line or the one on localhost:19002 to open the app in expo
 
 ctrl + c in the command line closes the app
 
