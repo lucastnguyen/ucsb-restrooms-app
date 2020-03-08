@@ -20,30 +20,34 @@ Have a mobile device or a computer capable of running a mobile device simulator.
 
 ### Dependencies
 
-react native maps (for the map on the homepage)
+react native maps
 
-react native collapsible list (for the list on the bathrooms tab)
+react native elements
+
+react native collapsible list
+
+firebase
 
 
 ### Installation Process
 
 install node.js from <https://nodejs.org/en/download/>, or use your favorite command line package manager (apt, pacman, homebrew, etc) to install npm
 
-`git clone git@github.com:ucsb-cs48-w20/5pm-restroom.git` (one of us needs to enter our username and password!)
+`git clone git@github.com:ucsb-cs48-w20/5pm-restroom.git
 
-`cd 5pm-restroom/app/UCSBB`
+cd 5pm-restroom/app/UCSBB
 
-`npm install -g expo-cli`
+npm install -g expo-cli
 
-`npm install react-native-maps`
+npm install react-native-maps
 
-`npm i react-native-elements`
+npm i react-native-elements
 
-`npm install react-native-collapsible-list`
+npm install react-native-collapsible-list
 
-`npm install --save firebase`
+npm install --save firebase
 
-`expo start`
+expo start`
 
 on a computer:
 
