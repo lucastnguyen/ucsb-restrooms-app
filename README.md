@@ -33,11 +33,9 @@ firebase
 
 install node.js from <https://nodejs.org/en/download/>, or use your favorite command line package manager (apt, pacman, homebrew, etc) to install npm
 
-`git clone git@github.com:ucsb-cs48-w20/5pm-restroom.git
+`git clone git@github.com:ucsb-cs48-w20/5pm-restroom.git\ncd 5pm-restroom/app/UCSBB'
 
-cd 5pm-restroom/app/UCSBB
-
-npm install -g expo-cli
+'npm install -g expo-cli
 
 npm install react-native-maps
 
