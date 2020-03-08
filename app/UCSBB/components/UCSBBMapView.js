@@ -16,7 +16,7 @@ rootRef.on("child_changed", function(snapshot) {
 });
 
 // retrieve keys
-rootRef.on("value", (snapshot) =>{
+rootRef.once("value", (snapshot) =>{
   var data = snapshot.val();
   buildingList = Object.keys(data);
 });
@@ -35,6 +35,7 @@ export default class UCSBBMapView extends Component {
 			let buildingList = Object.keys(data);
 			this.state.buildings = buildingList;
 			var views = [];
+			var load = true;
 			for(var i=0; i<buildingList.length; i++){
 			    rootRef.child(buildingList[i]).on("value", function(snapshot){
 			      var data = snapshot.val();
@@ -45,6 +46,9 @@ export default class UCSBBMapView extends Component {
 					var mtitle = buildingList[i] + " " + room; 
 			        var lat = data[room].Latitude;
 					var long = data[room].Longitude;
+					if(!lat || !long){
+						load = false;
+					}
 					var gender = data[room].Gender;
 					var genderColor = "rgb(255,20,147)";
 
@@ -60,14 +64,16 @@ export default class UCSBBMapView extends Component {
 						genderColor = "#32CD32";
 						gender = "All Gender";
 					}
-			        views.push(
-			              { 
-			              	title: mtitle,
-							coordinates: {latitude: lat, longitude: long,}, 
-							pinColor: genderColor,  
-							description: gender,
-			              }
-			        );
+					if(load)
+						views.push(
+							{ 
+								title: mtitle,
+								coordinates: {latitude: lat, longitude: long,}, 
+								pinColor: genderColor,  
+								description: gender,
+							}
+						);
+					load = true;
 			      }
 			    }
 			    );
