@@ -10,6 +10,11 @@ import CollapsibleList from "react-native-collapsible-list";
 import ListElement from '../components/ListElement';
 import { MonoText } from '../components/StyledText';
 import {db} from '../firebase.js';
+import Accordian from '../components/Accordian'
+import { YellowBox } from 'react-native';
+
+YellowBox.ignoreWarnings(['VirtualizedLists should never be nested']);
+YellowBox.ignoreWarnings(['Warning: Failed prop type: Invalid prop']);
 
 var rootRef = db.ref('/Buildings');
 var buildingList;
@@ -29,16 +34,19 @@ rootRef.on("value", function(snapshot){
 
 export default function BathroomsScreen() {
   var lists = [];
+  var viewsArray = [];
 
   for(var i=0; i<buildingList.length; i++){
-    var views = [];
     
     // retrieve children
     rootRef.child(buildingList[i]).on("value", function(snapshot){
       var data = snapshot.val();
       var roomList = Object.keys(data);
 
+      var views = [];
+
       for (var j=0; j<roomList.length; j++){
+
         room = roomList[j];
         var flag_access = data[room].Accessibility;
         var accessChair = ((flag_access=='True') ? 'wheelchair' : 'none');
@@ -46,28 +54,37 @@ export default function BathroomsScreen() {
         if (data[room].Gender=='neutral') {
           listStyle = styles.collapsibleItemNeutral;
         }
-        views.push(
+        //push room names, gender, and accessibility into array called views
+        views.push({
+          ID: buildingList[i]+roomList[j],
+          room: rootRef.child(buildingList[i]).child(roomList[j]).key,
+          gender: data[roomList[j]].Gender,
+          access: accessChair,
+      });
+        }
+
+        
+     /*   views.push(
           <View style={listStyle} key={buildingList[i]+roomList[j]}>
               <ListElement text={room} gender={data[room].Gender} access={accessChair} />
           </View>
-        );
-      }
-    });
 
+        );*/      
+        viewsArray.push(views);
+        //push array with room info into an array where each element contains an array of roominfo for a specific building
+    });
+    
+    
     lists.push(
-        <CollapsibleList
+        <Accordian
             key={buildingList[i]}
             numberOfVisibleItems={0}
-            wrapperStyle={styles.wrapperCollapsibleList}
-            buttonContent={
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>{buildingList[i]}</Text>
-              </View>
-            }>
-            {views}
-        </CollapsibleList>
-    );
-  }
+            title = {buildingList[i]}
+            data = {viewsArray[i]}
+            />
+    )
+  
+}
 
   return (
       <View style={styles.container}>
@@ -191,7 +208,7 @@ export default function BathroomsScreen() {
               </View>
 
           </CollapsibleList> */
-
+  
 //             <CollapsibleList
 //               numberOfVisibleItems={0}
 //               wrapperStyle={styles.wrapperCollapsibleList}
@@ -411,13 +428,13 @@ export default function BathroomsScreen() {
 }
 
 BathroomsScreen.navigationOptions = {
-  title: 'Bathrooms',
+  title: 'Bathrooms by Building',
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.1)"
+    backgroundColor: "#f9f9f9"
   },
   button: {
     flex: 1,
