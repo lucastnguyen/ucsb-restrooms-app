@@ -15,9 +15,14 @@ import UCSBBMapView from '../components/UCSBBMapView.js';
 
 import { MonoText } from '../components/StyledText';
 
+import WelcomePopup from '../components/WelcomePopup';
+
 export default function MapScreen() {
   return (
-    <UCSBBMapView />
+    <>
+      <WelcomePopup pagekey={"uniqukey"} title={"Welcome"} description={"Head to settings in the bottom right to filter bathrooms shown on the map!"}/>
+      <UCSBBMapView />
+    </>
   );
 }
 
