@@ -98,6 +98,7 @@ class BathroomsScreen extends React.Component {
   );
 
 }
+}
 
 BathroomsScreen.navigationOptions = {
   title: 'Bathrooms by Building',
