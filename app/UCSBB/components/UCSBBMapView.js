@@ -43,6 +43,7 @@ export default class UCSBBMapView extends Component {
 					var coords = [];
 					var temp = [];
 					var allGender = false;
+					var genNum = 0;
 			    	for (var j=0; j<roomList.length; j++){
 						var room = roomList[j];
 						var mtitle = buildingList[i] + " " + room; 
@@ -57,15 +58,18 @@ export default class UCSBBMapView extends Component {
 						if(gender == "female"){
 							genderColor = "rgb(255,20,147)";
 							gender = "Female";
+							genNum = 0;
 						}
 						else if(gender == "male"){
 							genderColor = "#0000FF";
 							gender = "Male";
+							genNum = 1;
 						}
 						else{
 							genderColor = "#32CD32";
 							gender = "All Gender";
 							allGender = true;
+							genNum = 2;
 						}
 						if(load){
 							var dupe = false;
@@ -75,14 +79,14 @@ export default class UCSBBMapView extends Component {
 									temp[x].description += ", " + room + " (" + gender + ")";
 									if(allGender)
 										temp[x].pinColor = "#32CD32";
-									else
+									else if(coords[x][2] != genNum && temp[x].pinColor != "#32CD32")
 										temp[x].pinColor = "rgb(148,0,211)";
 									dupe = true;
 									break;
 								}
 							}
 							if(!dupe){
-								coords.push([lat,long]);
+								coords.push([lat,long, genNum]);
 								temp.push(
 								{ 
 									title: mtitle,
@@ -92,6 +96,7 @@ export default class UCSBBMapView extends Component {
 								});
 								//console.log(temp);
 							}
+							allGender = false;
 						}
 						load = true;
 					}
