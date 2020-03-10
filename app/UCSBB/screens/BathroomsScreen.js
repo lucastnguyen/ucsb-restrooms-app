@@ -13,6 +13,7 @@ import {db} from '../firebase.js';
 import Accordian from '../components/Accordian'
 import { YellowBox } from 'react-native';
 
+
 YellowBox.ignoreWarnings(['VirtualizedLists should never be nested']);
 YellowBox.ignoreWarnings(['Warning: Failed prop type: Invalid prop']);
 
@@ -68,6 +69,7 @@ class BathroomsScreen extends React.Component {
           latitude: data[room].Latitude,
           longitude: data[room].Longitude,
       });
+
         }    
         viewsArray.push(views);
         //push array with room info into an array where each element contains an array of roominfo for a specific building
@@ -95,8 +97,13 @@ class BathroomsScreen extends React.Component {
       </ScrollView>
       </View>
   );
+
 }
 }
+
+BathroomsScreen.navigationOptions = {
+  title: 'Bathrooms by Building',
+};
 
 
 const styles = StyleSheet.create({
