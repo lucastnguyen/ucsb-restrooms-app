@@ -77,17 +77,20 @@ export default class UCSBBMapView extends Component {
 			      }
 			    }
 			    );
-
 			}
+			 
 			this.setState({region: {
-	      		latitude: LAT,
-				longitude: LONG,
-				latitudeDelta: 0.02305,
-				longitudeDelta: 0.01055,
+				//if a room is Selected, zoom in on that latitude and longitude. Else, open map normally (Should center on user location)
+				latitude : this.props.selectedRoomLatitude ? this.props.selectedRoomLatitude : LAT,
+				longitude : this.props.selectedRoomLongitude ? this.props.selectedRoomLongitude : LONG,
+				latitudeDelta: this.props.selectedRoomLatitude ? 0.00230 : 0.02305,
+				longitudeDelta: this.props.selectedRoomLongitude ? 0.00105 : 0.01055,
 			},
 			buildings: buildingList, 
 			markers: views,});
 		});
+		
+
 	}
 	constructor(props) {
 		super(props);
@@ -132,7 +135,7 @@ export default class UCSBBMapView extends Component {
 			    style = {styles.mapStyle}
 			    region = {this.state.region}
 			    ref = {map => {this.map = map}}
-			    onRegionChangeComplete={(region) => {this.onRegionChangeComplete(region)}}
+			    //onRegionChangeComplete={(region) => {this.onRegionChangeComplete(region)}}
 			    mapType = "standard"
 				provider = {MapView.PROVIDER_GOOGLE}
 				showsUserLocation = {true}
