@@ -1,13 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`List Element Rendering Female/Accessible should match to snapshot 1`] = `ShallowWrapper {}`;
+exports[`List Element Rendering Female/Accessible should match to snapshot 1`] = `
+<Text
+  style={
+    Object {
+      "fontFamily": "Courier",
+      "fontSize": 24,
+      "textAlign": "left",
+    }
+  }
+>
+  Test 0003         
+  <Text />
+   
+  <Text />
+</Text>
+`;
 
-exports[`List Element Rendering Female/Not Accessible should match to snapshot 1`] = `ShallowWrapper {}`;
+exports[`List Element Rendering Female/Not Accessible should match to snapshot 1`] = `
+<Text
+  style={
+    Object {
+      "fontFamily": "Courier",
+      "fontSize": 24,
+      "textAlign": "left",
+    }
+  }
+>
+  Test 0004         
+    
+   
+  <Text />
+</Text>
+`;
 
-exports[`List Element Rendering Male/Accessible should match to snapshot 1`] = `ShallowWrapper {}`;
+exports[`List Element Rendering Male/Accessible should match to snapshot 1`] = `
+<Text
+  style={
+    Object {
+      "fontFamily": "Courier",
+      "fontSize": 24,
+      "textAlign": "left",
+    }
+  }
+>
+  Test 0001         
+  <Text />
+   
+  <Text />
+</Text>
+`;
 
-exports[`List Element Rendering Male/Not Accessible should match to snapshot 1`] = `ShallowWrapper {}`;
+exports[`List Element Rendering Male/Not Accessible should match to snapshot 1`] = `
+<Text
+  style={
+    Object {
+      "fontFamily": "Courier",
+      "fontSize": 24,
+      "textAlign": "left",
+    }
+  }
+>
+  Test 0002         
+    
+   
+  <Text />
+</Text>
+`;
 
-exports[`List Element Rendering Neutral/Accessible should match to snapshot 1`] = `ShallowWrapper {}`;
+exports[`List Element Rendering Neutral/Accessible should match to snapshot 1`] = `
+<Text
+  style={
+    Object {
+      "fontFamily": "Courier",
+      "fontSize": 24,
+      "textAlign": "left",
+    }
+  }
+>
+  Test 0005         
+  <Text />
+   
+  <Text />
+</Text>
+`;
 
-exports[`List Element Rendering Neutral/Not Accessible should match to snapshot 1`] = `ShallowWrapper {}`;
+exports[`List Element Rendering Neutral/Not Accessible should match to snapshot 1`] = `
+<Text
+  style={
+    Object {
+      "fontFamily": "Courier",
+      "fontSize": 24,
+      "textAlign": "left",
+    }
+  }
+>
+  Test 0006         
+    
+   
+  <Text />
+</Text>
+`;

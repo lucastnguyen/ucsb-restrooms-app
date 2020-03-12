@@ -27,6 +27,12 @@ const LAT = 34.413963;
 const LONG = -119.846446;
 const {width, height} = Dimensions.get('window');
 
+const getCurrentLocation = () => {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(position => resolve(position), e => reject(e));
+  });
+};
+
 export default class UCSBBMapView extends Component {
 
 	componentDidMount(){
@@ -108,14 +114,20 @@ export default class UCSBBMapView extends Component {
 			    );
 
 			}
-			this.setState({region: {
-	      		latitude: LAT,
-				longitude: LONG,
-				latitudeDelta: 0.02305,
-				longitudeDelta: 0.01055,
-			},
-			buildings: buildingList, 
-			markers: views,});
+			return getCurrentLocation().then(position => {
+				if (position) {
+					this.setState({
+						region: {
+	      					latitude: position.coords.latitude,
+							longitude: position.coords.longitude,
+							latitudeDelta: 0.003,
+							longitudeDelta: 0.003,	
+							},
+						buildings: buildingList, 
+						markers: views,
+					});
+				}
+			});	
 		});
 	}
 	constructor(props) {
@@ -124,8 +136,8 @@ export default class UCSBBMapView extends Component {
 			region: {
 	      		latitude: LAT,
 				longitude: LONG,
-				latitudeDelta: 0.02305,
-				longitudeDelta: 0.01055,
+				latitudeDelta: 0.0001015,
+				longitudeDelta: 0.000911,
 			},
 			buildings: [],
 			markers: [],
@@ -136,38 +148,19 @@ export default class UCSBBMapView extends Component {
 		this.setState({region});
 	}
 
-	// onRegionChangeComplete(region) {
-	// 	if(region.latitude > LAT + 0.0052){
-	// 		region.latitude = LAT + 0.0052;
-	// 	}
-	// 	if(region.latitude < LAT - 0.0072){
-	// 		region.latitude = LAT - 0.0072;
-	// 	}
-	// 	if(region.longitude > LONG + 0.008){
-	// 		region.longitude = LONG + 0.008;
-	// 	}
-	// 	if(region.longitude < LONG - 0.0094){
-	// 		region.longitude = LONG - 0.0094;
-	// 	}
-	// 	this.map.animateCamera(
-	// 		{center: {latitude: region.latitude, longitude: region.longitude}}
-	// 	);
-	// }
-
 	render() {
 		return (
 			<View style={styles.container}>
 		  	  <MapView
 			    style = {styles.mapStyle}
 			    region = {this.state.region}
-			    // onRegionChangeComplete={(region) => {this.onRegionChangeComplete(region)}}
-			    mapType = "standard"
 			    ref = {map => {this.map = map}}
+			    mapType = "standard"
 				provider = {MapView.PROVIDER_GOOGLE}
 				showsUserLocation = {true}
 			    showsMyLocationButton = {true}
 			    minZoomLevel = {15}
-			    mapPadding={{top: 0, right: 0, bottom: 50, left: 0}} // For position of location button
+			    mapPadding={{top: 0, right: 0, bottom: 90, left: 0}} // For position of location button
 			  >
 		  	  {
 		  	  	this.state.markers.map((marker,index) => (

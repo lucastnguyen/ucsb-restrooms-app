@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UCSBBMapView should render the map view with our custom parameters and markers 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+    }
+  }
+>
+  <View>
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+    <View />
+  </View>
+</View>
+`;

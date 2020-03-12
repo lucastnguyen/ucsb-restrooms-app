@@ -1,14 +1,6 @@
 import React from 'react';
 import InfoIcon from '../InfoIcon';
 import TestRenderer from 'react-test-renderer';
-/*
-import {shallow} from 'enzyme';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-
-Enzyme.configure({ adapter: new Adapter() });
-*/
 
 describe ('Info Icon', () => {
     it('should render the Male icon and match to snapshot', () => {
@@ -31,32 +23,3 @@ describe ('Info Icon', () => {
         expect(component).toMatchSnapshot();
     });
 });
-
-/*
-describe('Info Icon', () => {
-    describe('Rendering Female Icon', () => {
-        it('should match to snapshot', () => {
-            const component = shallow(<InfoIcon name='female'/>)
-            expect(component).toMatchSnapshot()
-        });
-    });
-});
-
-describe('Info Icon', () => {
-    describe('Rendering Neutral Icon', () => {
-        it('should match to snapshot', () => {
-            const component = shallow(<InfoIcon name='user'/>)
-            expect(component).toMatchSnapshot()
-        });
-    });
-});
-
-describe('Info Icon', () => {
-    describe('Rendering Wheelchair Icon', () => {
-        it('should match to snapshot', () => {
-            const component = shallow(<InfoIcon name='wheelchair'/>)
-            expect(component).toMatchSnapshot()
-        });
-    });
-});
-*/
