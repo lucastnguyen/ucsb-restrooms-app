@@ -112,22 +112,22 @@ export default class UCSBBMapView extends Component {
 					);
 			    }
 			    );
-
 			}
 			return getCurrentLocation().then(position => {
 				if (position) {
-					this.setState({
-						region: {
-	      					latitude: position.coords.latitude,
-							longitude: position.coords.longitude,
-							latitudeDelta: 0.003,
-							longitudeDelta: 0.003,	
-							},
-						buildings: buildingList, 
-						markers: views,
-					});
+				  this.setState({
+					region: {
+					//if a room is Selected, zoom in on that latitude and longitude. Else, open map normally (Should center on user location)
+					  latitude: this.props.selectedRoomLatitude ? this.props.selectedRoomLatitude :position.coords.latitude,
+					  longitude: this.props.selectedRoomLongitude ? this.props.selectedRoomLongitude : position.coords.longitude,
+					  latitudeDelta: this.props.selectedRoomLatitude ? 0.00130 : 0.002,
+					  longitudeDelta: this.props.selectedRoomLongitude ? 0.00105 : 0.002,
+					},
+					buildings: buildingList, 
+					markers: views,
+				  });
 				}
-			});	
+			  });
 		});
 	}
 	constructor(props) {
@@ -156,21 +156,22 @@ export default class UCSBBMapView extends Component {
 			    region = {this.state.region}
 			    ref = {map => {this.map = map}}
 			    mapType = "standard"
-				provider = {MapView.PROVIDER_GOOGLE}
-				showsUserLocation = {true}
+				  provider = {MapView.PROVIDER_GOOGLE}
+				  showsUserLocation = {true}
 			    showsMyLocationButton = {true}
 			    minZoomLevel = {15}
-			    mapPadding={{top: 0, right: 0, bottom: 90, left: 0}} // For position of location button
+				  mapPadding={{top: 0, right: 0, bottom: 80, left: 0}} // For position of location button
+				  //increased padding so button is not covered by navigation bar
 			  >
 		  	  {
 		  	  	this.state.markers.map((marker,index) => (
 		  	  		<MapView.Marker
-		  	  			key = {index}
-		  	  			coordinate = {marker.coordinates}
-						title = {marker.title}
-						pinColor = {marker.pinColor}
-						description = {marker.description}
-		  	  		/>))
+		  	  		 key = {index}
+		  	  		 coordinate = {marker.coordinates}
+						   title = {marker.title}
+						   pinColor = {marker.pinColor}
+						   description = {marker.description}
+		  	  		 />))
 		  	  }
 			  </MapView>
 			</View>
