@@ -57,6 +57,7 @@ export default class UCSBBMapView extends Component {
 	  }
 
 	componentDidMount(){
+		console.log("componentDidMount");
 		rootRef.on("value", (snapshot) =>{
 			let data = snapshot.val();
 			let buildingList = Object.keys(data);
@@ -148,22 +149,21 @@ export default class UCSBBMapView extends Component {
 									}
 								}
 							}
-							//console.log(gender == "Male");
 							if(gender == "Male" || gender == "All Gender"){
-								if(access != "True"){
-									console.log(coordsMale.length);
-									for(var x = 0; x < coordsMale.length; x++){
-										if(coordsMale[x][0] == lat && coordsMale[x][1] == long){
-											male1[x].title += ", " + room;
-											male1[x].description += ", " + room + " (" + gender + ")";
-											if(allGender)
-												male1[x].pinColor = "#32CD32";
-											dupe = true;
-											break;
-										}
+								console.log("\n" + buildingList[i] + " " + room);
+								//console.log("Room is " + room);
+								console.log("Coords length is " + coordsMale.length);
+								for(var x = 0; x < coordsMale.length; x++){
+									if(coordsMale[x][0] == lat && coordsMale[x][1] == long){
+										male1[x].title += ", " + room;
+										male1[x].description += ", " + room + " (" + gender + ")";
+										if(allGender)
+											male1[x].pinColor = "#32CD32";
+										dupe = true;
+										break;
 									}
 								}
-								else{
+								if(access == "True"){
 									for(var x = 0; x < coordsMaleAccess.length; x++){
 										if(coordsMaleAccess[x][0] == lat && coordsMaleAccess[x][1] == long){
 											maleAccess1[x].title += ", " + room;
@@ -177,19 +177,17 @@ export default class UCSBBMapView extends Component {
 								}
 							}
 							if(gender == "Female" || gender == "All Gender"){
-								if(access != "True"){
-									for(var x = 0; x < coordsFemale.length; x++){
-										if(coordsFemale[x][0] == lat && coordsFemale[x][1] == long){
-											female1[x].title += ", " + room;
-											female1[x].description += ", " + room + " (" + gender + ")";
-											if(allGender)
-												female1[x].pinColor = "#32CD32";
-											dupe = true;
-											break;
-										}
+								for(var x = 0; x < coordsFemale.length; x++){
+									if(coordsFemale[x][0] == lat && coordsFemale[x][1] == long){
+										female1[x].title += ", " + room;
+										female1[x].description += ", " + room + " (" + gender + ")";
+										if(allGender)
+											female1[x].pinColor = "#32CD32";
+										dupe = true;
+										break;
 									}
 								}
-								else{
+								if(access == "True"){
 									for(var x = 0; x < coordsFemaleAccess.length; x++){
 										if(coordsFemaleAccess[x][0] == lat && coordsFemaleAccess[x][1] == long){
 											femaleAccess1[x].title += ", " + room;
