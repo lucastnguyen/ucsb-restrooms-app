@@ -55,6 +55,11 @@ export default class UCSBBMapView extends Component {
 						var mtitle = buildingList[i] + " " + room; 
 						var lat = data[room].Latitude;
 						var long = data[room].Longitude;
+						var access = data[room].Accessibility;
+						if(access == "True")
+							access = ", Acc.";
+						else
+							access = "";
 						if(!lat || !long){
 							load = false;
 						}
@@ -82,7 +87,7 @@ export default class UCSBBMapView extends Component {
 							for(var x = 0; x < coords.length; x++){
 								if(coords[x][0] == lat && coords[x][1] == long){
 									temp[x].title += ", " + room;
-									temp[x].description += ", " + room + " (" + gender + ")";
+									temp[x].description += ", " + room + " (" + gender + access + ")";
 									if(allGender)
 										temp[x].pinColor = "#32CD32";
 									else if(coords[x][2] != genNum && temp[x].pinColor != "#32CD32")
@@ -98,7 +103,7 @@ export default class UCSBBMapView extends Component {
 									title: mtitle,
 									coordinates: {latitude: lat, longitude: long,}, 
 									pinColor: genderColor,  
-									description: room + " (" + gender + ")",
+									description: room + " (" + gender + access + ")",
 								});
 								//console.log(temp);
 							}
