@@ -44,43 +44,72 @@ export default class UCSBBMapView extends Component {
 			var load = true;
 			for(var i=0; i<buildingList.length; i++){
 			    rootRef.child(buildingList[i]).on("value", function(snapshot){
-			      var data = snapshot.val();
-			      var roomList = Object.keys(data);
+			      	var data = snapshot.val();
+			      	var roomList = Object.keys(data);
+					var coords = [];
+					var temp = [];
+					var allGender = false;
+					var genNum = 0;
+			    	for (var j=0; j<roomList.length; j++){
+						var room = roomList[j];
+						var mtitle = buildingList[i] + " " + room; 
+						var lat = data[room].Latitude;
+						var long = data[room].Longitude;
+						if(!lat || !long){
+							load = false;
+						}
+						var gender = data[room].Gender;
+						var genderColor = "rgb(255,20,147)";
 
-			      for (var j=0; j<roomList.length; j++){
-					var room = roomList[j];
-					var mtitle = buildingList[i] + " " + room; 
-			        var lat = data[room].Latitude;
-					var long = data[room].Longitude;
-					if(!lat || !long){
-						load = false;
-					}
-					var gender = data[room].Gender;
-					var genderColor = "rgb(255,20,147)";
-
-					if(gender == "female"){
-						genderColor = "rgb(255,20,147)";
-						gender = "Female";
-					}
-					else if(gender == "male"){
-						genderColor = "#0000FF";
-						gender = "Male";
-					}
-					else{
-						genderColor = "#32CD32";
-						gender = "All Gender";
-					}
-					if(load)
-						views.push(
-							{ 
-								title: mtitle,
-								coordinates: {latitude: lat, longitude: long,}, 
-								pinColor: genderColor,  
-								description: gender,
+						if(gender == "female"){
+							genderColor = "rgb(255,20,147)";
+							gender = "Female";
+							genNum = 0;
+						}
+						else if(gender == "male"){
+							genderColor = "#0000FF";
+							gender = "Male";
+							genNum = 1;
+						}
+						else{
+							genderColor = "#32CD32";
+							gender = "All Gender";
+							allGender = true;
+							genNum = 2;
+						}
+						if(load){
+							var dupe = false;
+							for(var x = 0; x < coords.length; x++){
+								if(coords[x][0] == lat && coords[x][1] == long){
+									temp[x].title += ", " + room;
+									temp[x].description += ", " + room + " (" + gender + ")";
+									if(allGender)
+										temp[x].pinColor = "#32CD32";
+									else if(coords[x][2] != genNum && temp[x].pinColor != "#32CD32")
+										temp[x].pinColor = "rgb(148,0,211)";
+									dupe = true;
+									break;
+								}
 							}
-						);
-					load = true;
-			      }
+							if(!dupe){
+								coords.push([lat,long, genNum]);
+								temp.push(
+								{ 
+									title: mtitle,
+									coordinates: {latitude: lat, longitude: long,}, 
+									pinColor: genderColor,  
+									description: room + " (" + gender + ")",
+								});
+								//console.log(temp);
+							}
+							allGender = false;
+						}
+						load = true;
+					}
+					temp.forEach(function(mark){
+						views.push(mark);
+					}
+					);
 			    }
 			    );
 			}
@@ -99,7 +128,6 @@ export default class UCSBBMapView extends Component {
 				  });
 				}
 			  });
-			
 		});
 	}
 	constructor(props) {
@@ -128,22 +156,22 @@ export default class UCSBBMapView extends Component {
 			    region = {this.state.region}
 			    ref = {map => {this.map = map}}
 			    mapType = "standard"
-				provider = {MapView.PROVIDER_GOOGLE}
-				showsUserLocation = {true}
+				  provider = {MapView.PROVIDER_GOOGLE}
+				  showsUserLocation = {true}
 			    showsMyLocationButton = {true}
 			    minZoomLevel = {15}
-				mapPadding={{top: 0, right: 0, bottom: 80, left: 0}} // For position of location button
-				//increased padding so button is not covered by navigation bar
+				  mapPadding={{top: 0, right: 0, bottom: 80, left: 0}} // For position of location button
+				  //increased padding so button is not covered by navigation bar
 			  >
 		  	  {
 		  	  	this.state.markers.map((marker,index) => (
 		  	  		<MapView.Marker
-		  	  			key = {index}
-		  	  			coordinate = {marker.coordinates}
-						title = {marker.title}
-						pinColor = {marker.pinColor}
-						description = {marker.description}
-		  	  		/>))
+		  	  		 key = {index}
+		  	  		 coordinate = {marker.coordinates}
+						   title = {marker.title}
+						   pinColor = {marker.pinColor}
+						   description = {marker.description}
+		  	  		 />))
 		  	  }
 			  </MapView>
 			</View>
