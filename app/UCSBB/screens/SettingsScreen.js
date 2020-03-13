@@ -41,7 +41,6 @@ export default class Home extends Component {
 
   //function that does the initial fetching of saved values when the settings tab is opened
   componentDidMount() {
-    //this.props.navigation.setParams({ colors: this.colors });
     this.loadAsyncData();
   }
 

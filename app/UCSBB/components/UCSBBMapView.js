@@ -100,11 +100,6 @@ export default class UCSBBMapView extends Component {
 	});
 	}
 
-	// componentWillUnmount() {
-	// 	this.reloader.remove()
-	// }
-
-
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -226,9 +221,6 @@ export default class UCSBBMapView extends Component {
 								}
 							}
 							if(gender == "Male" || gender == "All Gender"){
-								//console.log("\n" + buildingList[i] + " " + room);
-								//console.log("Room is " + room);
-								//console.log("Coords length is " + coordsMale.length);
 								for(var x = 0; x < coordsMale.length; x++){
 									if(coordsMale[x][0] == lat && coordsMale[x][1] == long){
 										male1[x].title += ", " + room;
@@ -387,8 +379,6 @@ export default class UCSBBMapView extends Component {
 			});	
 		});
 
-		//console.log(this.state.gender);
-		//console.log(this.state.access);
 		this.retrieveItem("genderPreference").then((goals) => {
 			//this callback is executed when your Promise is resolved
 			this.state.gender = goals;
@@ -426,7 +416,7 @@ export default class UCSBBMapView extends Component {
 		});
 		console.log(this.state.gender);
 		console.log(this.state.access);
-		//console.log(this.state.gender == 1)
+
 		return (
 			<View style={styles.container}>
 		  	  <MapView
