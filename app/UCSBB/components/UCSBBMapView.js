@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { View, StyleSheet, Dimensions, TouchableOpacity, Text } from 'react-native';
+import { View, StyleSheet, Dimensions, TouchableOpacity, Text, AsyncStorage } from 'react-native';
 import {db} from '../firebase.js';
 //import console = require('console');
 
@@ -35,24 +35,136 @@ const getCurrentLocation = () => {
 
 export default class UCSBBMapView extends Component {
 
-	componentDidMount(){
+	async storeItem(key, item) {
+		try {
+			//we want to wait for the Promise returned by AsyncStorage.setItem()
+			//to be resolved to the actual value before returning the value
+			var jsonOfItem = await AsyncStorage.setItem(key, JSON.stringify(item));
+			return jsonOfItem;
+		} catch (error) {
+		  console.log(error.message);
+		}
+	  }
+	  async retrieveItem(key) {
+		try {
+		  const retrievedItem = await AsyncStorage.getItem(key);
+		  const item = JSON.parse(retrievedItem);
+		  return item;
+		} catch (error) {
+		  console.log(error.message);
+		}
+		return
+	  }
+
+	  componentDidMountSomething = async () =>{
+		this.reloader = this.props.navigation.addListener('didFocus', () => {
+			this.reload();
+		})
+
+		getCurrentLocation().then(location => {
+		if(location){
+			this.state.camera = {
+				center: {
+					latitude: position.coords.latitude,
+					longitude: position.coords.longitude
+				}
+			}
+		}
+	});
+	}
+
+	reload = async () => {
+		console.log('reloading map')
+		let genderKey = await AsyncStorage.getItem('genderPreference');
+		let access = await AsyncStorage.getItem('accessibility');
+		let genderMap = {0: "all", 1: "male", 2: "female"}
+		this.state.gender = genderMap[genderKey];
+		this.state.access = access;
+	}
+
+	componentDidMount = async () =>{
+		console.log("HELLO");
+		this.reloader = this.props.navigation.addListener('didFocus', () => {
+			this.reload();
+		})
+
+		getCurrentLocation().then(location => {
+		if(location){
+			this.state.camera = {
+				center: {
+					latitude: position.coords.latitude,
+					longitude: position.coords.longitude
+				}
+			}
+		}
+	});
+	}
+
+	// componentWillUnmount() {
+	// 	this.reloader.remove()
+	// }
+
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			region: {
+	      		latitude: LAT,
+				longitude: LONG,
+				latitudeDelta: 0.0001015,
+				longitudeDelta: 0.000911,
+			},
+			gender: -1,
+			access: "true",
+			buildings: [],
+			markers: [],
+			all: [],
+			allAccess: [],
+			male: [],
+			maleAccess: [],
+			female: [],
+			femaleAccess: [],
+		}
 		rootRef.on("value", (snapshot) =>{
 			let data = snapshot.val();
 			let buildingList = Object.keys(data);
 			this.state.buildings = buildingList;
-			var views = [];
+
+			var all = [];
+			var male = [];
+			var female = [];
+			var allAccess = [];
+			var maleAccess = [];
+			var femaleAccess = [];
+
 			var load = true;
 			for(var i=0; i<buildingList.length; i++){
 			    rootRef.child(buildingList[i]).on("value", function(snapshot){
 			      	var data = snapshot.val();
 			      	var roomList = Object.keys(data);
-					var coords = [];
-					var temp = [];
+					var coordsAll = [];
+					var coordsMale = [];
+					var coordsFemale = [];
+					var coordsAllAccess = [];
+					var coordsMaleAccess = [];
+					var coordsFemaleAccess = [];
+
+					var all1 = [];
+					var male1 = [];
+					var female1 = [];
+					var allAccess1 = [];
+					var maleAccess1 = [];
+					var femaleAccess1 = [];
+
 					var allGender = false;
 					var genNum = 0;
 			    	for (var j=0; j<roomList.length; j++){
 						var room = roomList[j];
 						var mtitle = buildingList[i] + " " + room; 
+						var accessible = data[room].Accessibility;
+						var access = "";
+						if(accessible == "True")
+							access = ", Acc.";
 						var lat = data[room].Latitude;
 						var long = data[room].Longitude;
 						if(!lat || !long){
@@ -78,70 +190,219 @@ export default class UCSBBMapView extends Component {
 							genNum = 2;
 						}
 						if(load){
-							var dupe = false;
-							for(var x = 0; x < coords.length; x++){
-								if(coords[x][0] == lat && coords[x][1] == long){
-									temp[x].title += ", " + room;
-									temp[x].description += ", " + room + " (" + gender + ")";
+							var allDupe = false;
+							var maleDupe = false;
+							var femaleDupe = false;
+							var allAccessDupe = false;
+							var maleAccessDupe = false;
+							var femaleAccessDupe = false;
+
+							for(var x = 0; x < coordsAll.length; x++){
+								if(coordsAll[x][0] == lat && coordsAll[x][1] == long){
+									all1[x].title += ", " + room;
+									all1[x].description += ", " + room + " (" + gender + access + ")";
 									if(allGender)
-										temp[x].pinColor = "#32CD32";
-									else if(coords[x][2] != genNum && temp[x].pinColor != "#32CD32")
-										temp[x].pinColor = "rgb(148,0,211)";
-									dupe = true;
+										all1[x].pinColor = "#32CD32";
+									else if(coordsAll[x][2] != genNum && all1[x].pinColor != "#32CD32"){
+										all1[x].pinColor = "rgb(148,0,211)";
+									}
+									allDupe = true;
 									break;
 								}
 							}
-							if(!dupe){
-								coords.push([lat,long, genNum]);
-								temp.push(
+							if(accessible == "True"){
+								for(var x = 0; x < coordsAllAccess.length; x++){
+									if(coordsAllAccess[x][0] == lat && coordsAllAccess[x][1] == long){
+										allAccess1[x].title += ", " + room;
+										allAccess1[x].description += ", " + room + " (" + gender + access + ")";
+										if(allGender)
+											allAccess1[x].pinColor = "#32CD32";
+										else if(coordsAllAccess[x][2] != genNum && allAccess1[x].pinColor != "#32CD32"){
+											allAccess1[x].pinColor = "rgb(148,0,211)";
+										}
+										allAccessDupe = true;
+										break;
+									}
+								}
+							}
+							if(gender == "Male" || gender == "All Gender"){
+								//console.log("\n" + buildingList[i] + " " + room);
+								//console.log("Room is " + room);
+								//console.log("Coords length is " + coordsMale.length);
+								for(var x = 0; x < coordsMale.length; x++){
+									if(coordsMale[x][0] == lat && coordsMale[x][1] == long){
+										male1[x].title += ", " + room;
+										male1[x].description += ", " + room + " (" + gender + access + ")";
+										if(allGender)
+											male1[x].pinColor = "#32CD32";
+										maleDupe = true;
+										break;
+									}
+								}
+								if(accessible == "True"){
+									for(var x = 0; x < coordsMaleAccess.length; x++){
+										if(coordsMaleAccess[x][0] == lat && coordsMaleAccess[x][1] == long){
+											maleAccess1[x].title += ", " + room;
+											maleAccess1[x].description += ", " + room + " (" + gender + access + ")";
+											if(allGender)
+												maleAccess1[x].pinColor = "#32CD32";
+											maleAccessDupe = true;
+											break;
+										}
+									}
+								}
+							}
+							if(gender == "Female" || gender == "All Gender"){
+								for(var x = 0; x < coordsFemale.length; x++){
+									if(coordsFemale[x][0] == lat && coordsFemale[x][1] == long){
+										female1[x].title += ", " + room;
+										female1[x].description += ", " + room + " (" + gender + access + ")";
+										if(allGender)
+											female1[x].pinColor = "#32CD32";
+										femaleDupe = true;
+										break;
+									}
+								}
+								if(accessible == "True"){
+									for(var x = 0; x < coordsFemaleAccess.length; x++){
+										if(coordsFemaleAccess[x][0] == lat && coordsFemaleAccess[x][1] == long){
+											femaleAccess1[x].title += ", " + room;
+											femaleAccess1[x].description += ", " + room + " (" + gender + access + ")";
+											if(allGender)
+												femaleAccess1[x].pinColor = "#32CD32";
+											femaleAccessDupe = true;
+											break;
+										}
+									}
+								}
+							}
+							if(!allDupe){
+								coordsAll.push([lat,long, genNum]);
+								all1.push(
 								{ 
 									title: mtitle,
 									coordinates: {latitude: lat, longitude: long,}, 
 									pinColor: genderColor,  
-									description: room + " (" + gender + ")",
+									description: room + " (" + gender + access + ")",
 								});
-								//console.log(temp);
+							}
+							if(accessible == "True" && !allAccessDupe){
+								coordsAllAccess.push([lat,long, genNum]);
+								allAccess1.push(
+									{ 
+										title: mtitle,
+										coordinates: {latitude: lat, longitude: long,}, 
+										pinColor: genderColor,  
+										description: room + " (" + gender + access + ")",
+									});
+							}
+							if(gender == "Male" || gender == "All Gender"){
+								if(!maleDupe){
+									coordsMale.push([lat,long, genNum]);
+									male1.push(
+										{ 
+											title: mtitle,
+											coordinates: {latitude: lat, longitude: long,}, 
+											pinColor: genderColor,  
+											description: room + " (" + gender + access + ")",
+										});
+								}
+								if(!maleAccessDupe && accessible == "True"){
+									coordsMaleAccess.push([lat,long, genNum]);
+									maleAccess1.push(
+										{ 
+											title: mtitle,
+											coordinates: {latitude: lat, longitude: long,}, 
+											pinColor: genderColor,  
+											description: room + " (" + gender + access + ")",
+										});
+								}
+							}
+							if(gender == "Female" || gender == "All Gender"){
+								if(!femaleDupe){
+									coordsFemale.push([lat,long, genNum]);
+									female1.push(
+										{ 
+											title: mtitle,
+											coordinates: {latitude: lat, longitude: long,}, 
+											pinColor: genderColor,  
+											description: room + " (" + gender + access + ")",
+										});
+								}
+								if(!femaleAccessDupe && accessible == "True"){
+									coordsFemaleAccess.push([lat,long, genNum]);
+									femaleAccess1.push(
+										{ 
+											title: mtitle,
+											coordinates: {latitude: lat, longitude: long,}, 
+											pinColor: genderColor,  
+											description: room + " (" + gender + access + ")",
+										});
+								}
 							}
 							allGender = false;
 						}
 						load = true;
 					}
-					temp.forEach(function(mark){
-						views.push(mark);
-					}
-					);
+					all1.forEach(function(mark){
+						all.push(mark);
+					});
+					female1.forEach(function(mark){
+						female.push(mark);
+					});
+					male1.forEach(function(mark){
+						male.push(mark);
+					});
+					allAccess1.forEach(function(mark){
+						allAccess.push(mark);
+					});
+					maleAccess1.forEach(function(mark){
+						maleAccess.push(mark);
+					});
+					femaleAccess1.forEach(function(mark){
+						femaleAccess.push(mark);
+					});
 			    }
 			    );
+
 			}
 			return getCurrentLocation().then(position => {
 				if (position) {
-				  this.setState({
-					region: {
-					//if a room is Selected, zoom in on that latitude and longitude. Else, open map normally (Should center on user location)
-					  latitude: this.props.selectedRoomLatitude ? this.props.selectedRoomLatitude :position.coords.latitude,
-					  longitude: this.props.selectedRoomLongitude ? this.props.selectedRoomLongitude : position.coords.longitude,
-					  latitudeDelta: this.props.selectedRoomLatitude ? 0.00130 : 0.002,
-					  longitudeDelta: this.props.selectedRoomLongitude ? 0.00105 : 0.002,
-					},
-					buildings: buildingList, 
-					markers: views,
-				  });
+					this.setState({
+						region: {
+	      					latitude: position.coords.latitude,
+							longitude: position.coords.longitude,
+							latitudeDelta: 0.003,
+							longitudeDelta: 0.003,	
+							},
+						buildings: buildingList, 
+						all: all,
+						allAccess: allAccess,
+						male: male,
+						maleAccess: maleAccess,
+						female: female,
+						femaleAccess: femaleAccess,
+					});
 				}
-			  });
+			});	
 		});
-	}
-	constructor(props) {
-		super(props);
-		this.state = {
-			region: {
-	      		latitude: LAT,
-				longitude: LONG,
-				latitudeDelta: 0.0001015,
-				longitudeDelta: 0.000911,
-			},
-			buildings: [],
-			markers: [],
-		}
+
+		//console.log(this.state.gender);
+		//console.log(this.state.access);
+		this.retrieveItem("genderPreference").then((goals) => {
+			//this callback is executed when your Promise is resolved
+			this.state.gender = goals;
+			}).catch((error) => {
+			//this callback is executed when your Promise is rejected
+			console.log('Promise is rejected with error: ' + error);
+		});
+		this.retrieveItem("accessibility").then((goals) => {
+			//this callback is executed when your Promise is resolved
+			this.state.access = goals;
+			}).catch((error) => {
+			//this callback is executed when your Promise is rejected
+			console.log('Promise is rejected with error: ' + error);
+		});
 	}
 
 	onRegionChange(region) {
@@ -149,6 +410,23 @@ export default class UCSBBMapView extends Component {
 	}
 
 	render() {
+		this.retrieveItem("genderPreference").then((goals) => {
+			//this callback is executed when your Promise is resolved
+			this.state.gender = goals;
+			}).catch((error) => {
+			//this callback is executed when your Promise is rejected
+			console.log('Promise is rejected with error: ' + error);
+		});
+		this.retrieveItem("accessibility").then((goals) => {
+			//this callback is executed when your Promise is resolved
+			this.state.access = goals;
+			}).catch((error) => {
+			//this callback is executed when your Promise is rejected
+			console.log('Promise is rejected with error: ' + error);
+		});
+		console.log(this.state.gender);
+		console.log(this.state.access);
+		//console.log(this.state.gender == 1)
 		return (
 			<View style={styles.container}>
 		  	  <MapView
@@ -156,23 +434,74 @@ export default class UCSBBMapView extends Component {
 			    region = {this.state.region}
 			    ref = {map => {this.map = map}}
 			    mapType = "standard"
-				  provider = {MapView.PROVIDER_GOOGLE}
-				  showsUserLocation = {true}
+				provider = {MapView.PROVIDER_GOOGLE}
+				showsUserLocation = {true}
 			    showsMyLocationButton = {true}
-			    minZoomLevel = {15}
-				  mapPadding={{top: 0, right: 0, bottom: 80, left: 0}} // For position of location button
-				  //increased padding so button is not covered by navigation bar
+				minZoomLevel = {15}
+				onLongPress= {() => this.forceUpdate()}
+				mapPadding={{top: 0, right: 0, bottom: 90, left: 0}} // For position of location button
 			  >
 		  	  {
-		  	  	this.state.markers.map((marker,index) => (
+		  	  	(this.state.gender == 0 && this.state.access == true) && this.state.allAccess.map((marker,index) => (
 		  	  		<MapView.Marker
-		  	  		 key = {index}
-		  	  		 coordinate = {marker.coordinates}
-						   title = {marker.title}
-						   pinColor = {marker.pinColor}
-						   description = {marker.description}
-		  	  		 />))
+		  	  			key = {index}
+		  	  			coordinate = {marker.coordinates}
+						title = {marker.title}
+						pinColor = {marker.pinColor}
+						description = {marker.description}
+		  	  		/>))
 		  	  }
+			  {
+		  	  	this.state.gender == 0 && this.state.access == false && this.state.all.map((marker,index) => (
+		  	  		<MapView.Marker
+		  	  			key = {index}
+		  	  			coordinate = {marker.coordinates}
+						title = {marker.title}
+						pinColor = {marker.pinColor}
+						description = {marker.description}
+		  	  		/>))
+		  	  }
+						  	  {
+		  	  	this.state.gender == 1 && this.state.access == true && this.state.maleAccess.map((marker,index) => (
+		  	  		<MapView.Marker
+		  	  			key = {index}
+		  	  			coordinate = {marker.coordinates}
+						title = {marker.title}
+						pinColor = {marker.pinColor}
+						description = {marker.description}
+		  	  		/>))
+		  	  }
+						  	  {
+		  	  	this.state.gender == 1 && this.state.access == false && this.state.male.map((marker,index) => (
+		  	  		<MapView.Marker
+		  	  			key = {index}
+		  	  			coordinate = {marker.coordinates}
+						title = {marker.title}
+						pinColor = {marker.pinColor}
+						description = {marker.description}
+		  	  		/>))
+		  	  }
+						  	  {
+		  	  	this.state.gender == 2 && this.state.access == true && this.state.femaleAccess.map((marker,index) => (
+		  	  		<MapView.Marker
+		  	  			key = {index}
+		  	  			coordinate = {marker.coordinates}
+						title = {marker.title}
+						pinColor = {marker.pinColor}
+						description = {marker.description}
+		  	  		/>))
+		  	  }
+						  	  {
+		  	  	this.state.gender == 2 && this.state.access == false && this.state.female.map((marker,index) => (
+		  	  		<MapView.Marker
+		  	  			key = {index}
+		  	  			coordinate = {marker.coordinates}
+						title = {marker.title}
+						pinColor = {marker.pinColor}
+						description = {marker.description}
+		  	  		/>))
+		  	  }
+				
 			  </MapView>
 			</View>
 		);
