@@ -92,27 +92,24 @@ export default class UCSBBMapView extends Component {
 		if(location){
 			this.state.camera = {
 				center: {
-					latitude: position.coords.latitude,
-					longitude: position.coords.longitude
+					latitude: this.props.selectedRoomLatitude ? this.props.selectedRoomLatitude :position.coords.latitude,
+					longitude: this.props.selectedRoomLongitude ? this.props.selectedRoomLongitude : position.coords.longitude,
+					latitudeDelta: this.props.selectedRoomLatitude ? 0.00130 : 0.002,
+					longitudeDelta: this.props.selectedRoomLongitude ? 0.00105 : 0.002,
 				}
 			}
 		}
 	});
 	}
 
-	// componentWillUnmount() {
-	// 	this.reloader.remove()
-	// }
-
-
 	constructor(props) {
 		super(props);
 		this.state = {
 			region: {
-	      		latitude: LAT,
-				longitude: LONG,
-				latitudeDelta: 0.0001015,
-				longitudeDelta: 0.000911,
+				latitude: this.props.selectedRoomLatitude ? this.props.selectedRoomLatitude :LAT,
+				longitude: this.props.selectedRoomLongitude ? this.props.selectedRoomLongitude : LONG,
+				latitudeDelta: this.props.selectedRoomLatitude ? 0.00130 : 0.002,
+				longitudeDelta: this.props.selectedRoomLongitude ? 0.00105 : 0.002,
 			},
 			gender: -1,
 			access: "true",
@@ -226,9 +223,6 @@ export default class UCSBBMapView extends Component {
 								}
 							}
 							if(gender == "Male" || gender == "All Gender"){
-								//console.log("\n" + buildingList[i] + " " + room);
-								//console.log("Room is " + room);
-								//console.log("Coords length is " + coordsMale.length);
 								for(var x = 0; x < coordsMale.length; x++){
 									if(coordsMale[x][0] == lat && coordsMale[x][1] == long){
 										male1[x].title += ", " + room;
@@ -370,10 +364,10 @@ export default class UCSBBMapView extends Component {
 				if (position) {
 					this.setState({
 						region: {
-	      					latitude: position.coords.latitude,
-							longitude: position.coords.longitude,
-							latitudeDelta: 0.003,
-							longitudeDelta: 0.003,	
+	      					latitude: this.props.selectedRoomLatitude ? this.props.selectedRoomLatitude :position.coords.latitude,
+							longitude: this.props.selectedRoomLongitude ? this.props.selectedRoomLongitude : position.coords.longitude,
+							latitudeDelta: this.props.selectedRoomLatitude ? 0.00130 : 0.002,
+							longitudeDelta: this.props.selectedRoomLongitude ? 0.00105 : 0.002,
 							},
 						buildings: buildingList, 
 						all: all,
@@ -387,8 +381,6 @@ export default class UCSBBMapView extends Component {
 			});	
 		});
 
-		//console.log(this.state.gender);
-		//console.log(this.state.access);
 		this.retrieveItem("genderPreference").then((goals) => {
 			//this callback is executed when your Promise is resolved
 			this.state.gender = goals;
@@ -426,7 +418,7 @@ export default class UCSBBMapView extends Component {
 		});
 		console.log(this.state.gender);
 		console.log(this.state.access);
-		//console.log(this.state.gender == 1)
+
 		return (
 			<View style={styles.container}>
 		  	  <MapView
