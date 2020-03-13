@@ -24,14 +24,12 @@ react native maps
 
 react native elements
 
-react native collapsible list
-
 firebase
 
 
 ### Installation Process
 
-install node.js from <https://nodejs.org/en/download/>, or use your favorite command line package manager (apt, pacman, homebrew, etc) to install npm
+Install node.js from <https://nodejs.org/en/download/>, or use your favorite command line package manager (apt, pacman, homebrew, etc) to install npm.
 
 ```
 git clone git@github.com:ucsb-cs48-w20/5pm-restroom.git
@@ -43,8 +41,6 @@ npm install -g expo-cli
 npm install react-native-maps
 
 npm install react-native-elements
-
-npm install react-native-collapsible-list
 
 npm install --save firebase
 
@@ -63,21 +59,27 @@ on a mobile device:
 
 - scan the QR code that appears in the command line or the one on localhost:19002 to open the app in expo
 
-ctrl + c in the command line closes the app
+ctrl + c in the command line closes the app.
 
 
 ## Functionality
 
 Usage:
 
-The "map" tab (home screen) is a map of the UCSB campus with markers for buildings. Drag to move the map, and pinch to zoom. Markers can be tapped on to display building information.
+The "map" tab (home screen) is a map of the UCSB campus with markers that represent the locations of bathrooms around campus. Markers are color coded according to the gender of the bathroom. Drag to move the map, and pinch to zoom. Markers can be tapped on to display the room number and accessibility of each bathroom.
 
-The "bathrooms" tab contains a list of bathrooms in each building. Tap on a building name to reveal the list of bathrooms color coded by gender, as well as accessibility information. Tapping on the building name again collapses this list.
+The "bathrooms" tab contains a list of bathrooms in each building. Tap on a building name to reveal the list of bathrooms with information gender, as well as accessibility information. Tapping on a bathroom in the list takes the user back to the "map" tab, and centers on the chosen bathroom. Tapping on the building name again collapses this list.
+
+The "settings" tab contains a few options for the user to filter which bathrooms are shown on the map. Users can set their bathroom gender preference, as well as their accessibility preference.
 
 
 ## Known Problems
 
-There are currently no known problems.
+Tapping on bathrooms in the bathroom list multiple dozens of times causes the stack of tabs to fill up. This gradually degrades performance of the app and eventually causes a crash.
+
+Tapping on the "maps" tab many times while on the map sometimes causes the settings to reset.
+
+Expanding a building in the bathrooms tab causes infinite white space underneath the resultant list of bathrooms that appears.
 
 
 ## License
