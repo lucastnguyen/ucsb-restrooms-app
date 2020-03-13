@@ -92,8 +92,10 @@ export default class UCSBBMapView extends Component {
 		if(location){
 			this.state.camera = {
 				center: {
-					latitude: position.coords.latitude,
-					longitude: position.coords.longitude
+					latitude: this.props.selectedRoomLatitude ? this.props.selectedRoomLatitude :position.coords.latitude,
+					longitude: this.props.selectedRoomLongitude ? this.props.selectedRoomLongitude : position.coords.longitude,
+					latitudeDelta: this.props.selectedRoomLatitude ? 0.00130 : 0.002,
+					longitudeDelta: this.props.selectedRoomLongitude ? 0.00105 : 0.002,
 				}
 			}
 		}
@@ -109,10 +111,10 @@ export default class UCSBBMapView extends Component {
 		super(props);
 		this.state = {
 			region: {
-	      		latitude: LAT,
-				longitude: LONG,
-				latitudeDelta: 0.0001015,
-				longitudeDelta: 0.000911,
+				latitude: this.props.selectedRoomLatitude ? this.props.selectedRoomLatitude :LAT,
+				longitude: this.props.selectedRoomLongitude ? this.props.selectedRoomLongitude : LONG,
+				latitudeDelta: this.props.selectedRoomLatitude ? 0.00130 : 0.002,
+				longitudeDelta: this.props.selectedRoomLongitude ? 0.00105 : 0.002,
 			},
 			gender: -1,
 			access: "true",
@@ -370,10 +372,10 @@ export default class UCSBBMapView extends Component {
 				if (position) {
 					this.setState({
 						region: {
-	      					latitude: position.coords.latitude,
-							longitude: position.coords.longitude,
-							latitudeDelta: 0.003,
-							longitudeDelta: 0.003,	
+	      					latitude: this.props.selectedRoomLatitude ? this.props.selectedRoomLatitude :position.coords.latitude,
+							longitude: this.props.selectedRoomLongitude ? this.props.selectedRoomLongitude : position.coords.longitude,
+							latitudeDelta: this.props.selectedRoomLatitude ? 0.00130 : 0.002,
+							longitudeDelta: this.props.selectedRoomLongitude ? 0.00105 : 0.002,
 							},
 						buildings: buildingList, 
 						all: all,
