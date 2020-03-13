@@ -56,8 +56,75 @@ export default class UCSBBMapView extends Component {
 		return
 	  }
 
-	componentDidMount(){
-		//console.log("componentDidMount");
+	  componentDidMountSomething = async () =>{
+		this.reloader = this.props.navigation.addListener('didFocus', () => {
+			this.reload();
+		})
+
+		getCurrentLocation().then(location => {
+		if(location){
+			this.state.camera = {
+				center: {
+					latitude: position.coords.latitude,
+					longitude: position.coords.longitude
+				}
+			}
+		}
+	});
+	}
+
+	reload = async () => {
+		console.log('reloading map')
+		let genderKey = await AsyncStorage.getItem('genderPreference');
+		let access = await AsyncStorage.getItem('accessibility');
+		let genderMap = {0: "all", 1: "male", 2: "female"}
+		this.state.gender = genderMap[genderKey];
+		this.state.access = access;
+	}
+
+	componentDidMount = async () =>{
+		console.log("HELLO");
+		this.reloader = this.props.navigation.addListener('didFocus', () => {
+			this.reload();
+		})
+
+		getCurrentLocation().then(location => {
+		if(location){
+			this.state.camera = {
+				center: {
+					latitude: position.coords.latitude,
+					longitude: position.coords.longitude
+				}
+			}
+		}
+	});
+	}
+
+	// componentWillUnmount() {
+	// 	this.reloader.remove()
+	// }
+
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			region: {
+	      		latitude: LAT,
+				longitude: LONG,
+				latitudeDelta: 0.0001015,
+				longitudeDelta: 0.000911,
+			},
+			gender: -1,
+			access: "true",
+			buildings: [],
+			markers: [],
+			all: [],
+			allAccess: [],
+			male: [],
+			maleAccess: [],
+			female: [],
+			femaleAccess: [],
+		}
 		rootRef.on("value", (snapshot) =>{
 			let data = snapshot.val();
 			let buildingList = Object.keys(data);
@@ -319,27 +386,7 @@ export default class UCSBBMapView extends Component {
 				}
 			});	
 		});
-	}
-	constructor(props) {
-		super(props);
-		this.state = {
-			region: {
-	      		latitude: LAT,
-				longitude: LONG,
-				latitudeDelta: 0.0001015,
-				longitudeDelta: 0.000911,
-			},
-			gender: -1,
-			access: "true",
-			buildings: [],
-			markers: [],
-			all: [],
-			allAccess: [],
-			male: [],
-			maleAccess: [],
-			female: [],
-			femaleAccess: [],
-		}
+
 		//console.log(this.state.gender);
 		//console.log(this.state.access);
 		this.retrieveItem("genderPreference").then((goals) => {
