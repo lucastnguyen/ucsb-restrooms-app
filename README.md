@@ -36,13 +36,9 @@ git clone git@github.com:ucsb-cs48-w20/5pm-restroom.git
 
 cd 5pm-restroom/app/UCSBB
 
+npm install
+
 npm install -g expo-cli
-
-npm install react-native-maps
-
-npm install react-native-elements
-
-npm install --save firebase
 
 expo start
 ```
