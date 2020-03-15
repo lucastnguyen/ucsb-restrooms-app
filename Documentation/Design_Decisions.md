@@ -47,4 +47,5 @@ Our team of six, influenced by the teachings of CS48, decided to implement many 
 * We used Slack as our main method of communication and tried to stay in touch
 * We held out-of-class meetings to do sprint planning if class time was not enough
 * We needed to have others review our Pull Requests to approve it (this helped lower the amount of bugs that went into the Testing Branch)
+
 By choosing to use these practices, the team worked together better and we created a working product in the end of the ten weeks.
